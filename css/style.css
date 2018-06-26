@@ -678,6 +678,9 @@ footer {
   #lead-content img {
     max-width:50%;
   }
+  #lead-content h1 {
+    padding-top:5%;
+  }
   #about {
     text-align: center
   }
