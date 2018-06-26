@@ -149,15 +149,14 @@ header.sticky {
   font-size: 1.5em;
   z-index: 20;
   padding: 0 7px;
-  border-radius: 4px;
-  background: #282828;
+  border-radiusfff;
 }
 
 #mobile-menu-close {
   display: none;
   text-align: right;
   width: 100%;
-  background: #282828;
+  background: #fff;
   font-size: 1.5em;
   padding-right: 15px;
   padding-top: 10px;
