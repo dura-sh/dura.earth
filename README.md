@@ -1,3 +1,26 @@
-# DuraChain Homepage
-This is the source code for the DuraChain website located at [https://durachain.io](https://durachain.io).
-This document is written in Java Script
+# Dura.* Site
+
+The documentation source of [Dura.*](https://github.com/ant-design/ant-design-pro).
+
+### Development
+
+```bash
+$ git clone git@github.com:ant-design/ant-design-pro-site.git
+$ cd ant-design-pro-site
+$ npm install
+$ npm start
+```
+
+Then visit http://localhost:8001 .
+
+### Deploy
+
+```
+$ npm run site
+```
+
+### Publish Components
+
+```
+$ npm run publish-components
+```
