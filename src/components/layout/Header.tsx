@@ -4,10 +4,9 @@ import { FormattedMessage, injectIntl } from 'react-intl';
 import { Link } from 'gatsby';
 import * as utils from '../utils';
 import { Row, Col, Icon, Select, Input, Menu, Button, Modal, Popover } from 'antd';
+import logo from '../../images/logo.png';
 
 const { Option } = Select;
-
-const LOGO_URL = 'https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg';
 
 const key = 'antd-pro@2.0.0-notification-sent';
 
@@ -213,9 +212,6 @@ class Header extends React.Component<HeaderProps, HeaderState> {
             <FormattedMessage id="app.header.menu.docs" />
           </Link>
         </Menu.Item>
-        <Menu.Item key="blog">
-          <Link to={utils.getLocalizedPathname('/blog/change-theme', isZhCN)}>Blog</Link>
-        </Menu.Item>
         {menuMode === 'inline' && (
           <Menu.Item key="preview">
             <a target="_blank" href="http://preview.pro.ant.design/" rel="noopener noreferrer">
@@ -244,11 +240,7 @@ class Header extends React.Component<HeaderProps, HeaderState> {
         <Row>
           <Col xxl={4} xl={5} lg={8} md={8} sm={24} xs={24}>
             <Link id="logo" to="/">
-              <img src={LOGO_URL} alt="logo" />
-              <img
-                src="https://gw.alipayobjects.com/zos/rmsportal/tNoOLUAkyuGLXoZvaibF.svg"
-                alt="Dura.*"
-              />
+              <img src={logo} alt="logo" />
             </Link>
           </Col>
           <Col xxl={20} xl={19} lg={16} md={16} sm={0} xs={0}>
@@ -263,28 +255,18 @@ class Header extends React.Component<HeaderProps, HeaderState> {
             </div>
             <div className="header-meta">
               <div className="right-header">
-                <div id="lang">
-                  <Button onClick={this.handleLangChange} size="small">
-                    <FormattedMessage id="app.header.lang" />
-                  </Button>
-                </div>
-                <div id="preview">
+                <div id="joinus">
                   <a
-                    id="preview-button"
+                    id="joinus-button"
                     target="_blank"
-                    href="http://preview.pro.ant.design"
+                    href="/docs/dura-protocol-network"
                     rel="noopener noreferrer"
                   >
-                    <Button icon="eye-o" size="small">
-                      <FormattedMessage id="app.home.preview" />
+                    <Button icon="global" size="small">
+                      <FormattedMessage id="app.home.joinus" />
                     </Button>
                   </a>
                 </div>
-                <Select size="small" onChange={this.onVersionChange} value="stable">
-                  <Option value="v1">v1</Option>
-                  <Option value="v2">v2</Option>
-                  <Option value="stable">v4</Option>
-                </Select>
               </div>
               {menuMode === 'horizontal' ? <div id="menu">{menu}</div> : null}
             </div>

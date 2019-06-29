@@ -8,7 +8,7 @@ import cnLocale from '../../locale/zh-CN';
 import * as utils from '../utils';
 import '../../static/style';
 import Header from './Header';
-import Footer from './Footer';
+
 
 interface LayoutProps {
   location: {
@@ -52,7 +52,6 @@ export class Layout extends React.Component<LayoutProps, LayoutState> {
               ...children.props,
               isMobile: restProps.isMobile,
             })}
-            <Footer {...restProps} location={location} />
           </div>
         </LocaleProvider>
       </IntlProvider>

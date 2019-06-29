@@ -18,85 +18,22 @@ import store from '../../images/store.svg';
 import support from '../../images/support.svg';
 
 const TweenOneGroup = TweenOne.TweenOneGroup;
-const featuresCN = [
-  {
-    title: '优雅美观',
-    content: '基于 Ant Design 体系精心设计',
-    src: 'VriUmzNjDnjoFoFFZvuh.svg',
-    color: '#13C2C2',
-    shadowColor: 'rgba(19,194,194,.25)',
-  },
-  {
-    title: '常见设计模式',
-    content: '提炼自中后台应用的典型页面和场景',
-    src: 'smwQOoxCjXVbNAKMqvWk.svg',
-    color: '#2F54EB',
-    shadowColor: 'rgba(47,84,235,.25)',
-  },
-  {
-    title: '最新技术栈',
-    content: '使用 React/dva/antd 等前端前沿技术开发',
-    src: 'hBbIHzUsSbSxrhoRFYzi.svg',
-    color: '#F5222D',
-    shadowColor: 'rgba(245,34,45,.25)',
-  },
-  {
-    title: '响应式',
-    content: '针对不同屏幕大小设计',
-    src: 'BISfzKcCNCYFmTYcUygW.svg',
-    color: '#1AC44D',
-    shadowColor: 'rgba(26,196,77,.25)',
-  },
-  {
-    title: '主题',
-    content: '可配置的主题满足多样化的品牌诉求',
-    src: 'XxqEexmShHOofjMYOCHi.svg',
-    color: '#FAAD14',
-    shadowColor: 'rgba(250,173,20,.25)',
-  },
-  {
-    title: '国际化',
-    content: '内建业界通用的国际化方案',
-    src: 'JsixxWSViARJnQbAAPkI.svg',
-    color: '#722ED1',
-    shadowColor: 'rgba(114,46,209,.25)',
-  },
-  {
-    title: '最佳实践',
-    content: '良好的工程实践助你持续产出高质量代码',
-    src: 'pbmKMSFpLurLALLNliUQ.svg',
-    color: '#FA8C16',
-    shadowColor: 'rgba(250,140,22,.25)',
-  },
-  {
-    title: 'Mock 数据',
-    content: '实用的本地数据调试方案',
-    src: 'aLQyKyUyssIUhHTZqCIb.svg',
-    color: '#EB2F96',
-    shadowColor: 'rgba(235,45,150,.25)',
-  },
-  {
-    title: 'UI 测试',
-    content: '自动化测试保障前端产品质量',
-    src: 'RpJIQitGbSCHwLMimybX.svg',
-    color: '#1890FF',
-    shadowColor: 'rgba(24,144,255,.25)',
-  },
-];
 
-const featuresEN = [
+const implementations = [
   {
     title: ' dura.health',
-    content: 'Health management system',
+    content:
+      "The durable health gateway for patients, practioneers, and providers alike. Together in one place with sureties for everyone's individual reality.",
     src: health,
     color: '#13C2C2',
     shadowColor: 'rgba(19,194,194,.25)',
   },
   {
     title: 'dura.chat',
-    content: 'Instant messaging platform',
+    content:
+      'The durable communication gateway for peer-to-peer messaging. From personal calls to communitity messaging, and voip video conferencing. Secureity is a surety derived for your unique individual reality.',
     src: chat,
-    color: '#b7567d0',
+    color: '#B757D0',
     shadowColor: 'rgba(183, 87, 208, .25)',
   },
   {
@@ -207,9 +144,9 @@ class Page1 extends React.PureComponent {
 
   render() {
     const { hoverNum } = this.state;
-    const { intl, isMobile } = this.props;
+    const { isMobile } = this.props;
     let children = [[], [], []];
-    (intl.locale === 'zh-CN' ? featuresCN : featuresEN).forEach((item, i) => {
+    implementations.forEach((item, i) => {
       const isHover = hoverNum === i;
       const pointChild = [
         'point-0 left',
@@ -298,7 +235,8 @@ class Page1 extends React.PureComponent {
             </Parallax>
           )}
           <h2>
-            What can <span>Dura</span> do for you{' '}
+            Let your <span>individuality reality</span> shine as the surety for our{' '}
+            <span>durable</span> world:
           </h2>
           <div className="title-line-wrapper page1-line">
             <div className="title-line" />

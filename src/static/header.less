@@ -10,11 +10,12 @@
 }
 
 #header {
-  background-color: #fff;
-  box-shadow: 0 2px 8px rgba(240, 241, 242, 65);
-  position: relative;
+  background-color: #01172c;
+  box-shadow: 0 2px 8px rgba(179, 229, 252, 1);
+  position: fixed;
+  width: 100vw;
   z-index: 10;
-  height: 64px;
+  height: 48px;
   .ant-menu-overflowed-submenu {
     display: none;
   }
@@ -22,29 +23,20 @@
 
 #logo {
   overflow: hidden;
-  padding-left: 40px;
+  padding-left: 22px;
   float: left;
-  line-height: 64px;
+  line-height: 48px;
   text-decoration: none;
-  height: 64px;
+  height: 48px;
   img {
     display: inline;
     vertical-align: middle;
-    margin-right: 16px;
-    width: 32px;
-  }
-  img + img {
-    height: 16px;
-    margin-right: 0;
-    width: auto;
-    position: relative;
-    top: 1px;
+    height: 36px;
   }
 }
 
 .header-meta {
   .clearfix();
-  padding-right: 40px;
 }
 .search-loading {
   position: absolute;
@@ -55,10 +47,8 @@
 #search-box {
   float: left;
   height: 22px;
-  margin: 22px auto 0;
-  padding-left: 16px;
+  margin: 11px auto 0;
   line-height: 22px;
-  border-left: 1px solid @site-border-color-split;
 }
 
 #search-box .anticon {
@@ -83,9 +73,10 @@
 #menu {
   float: right;
   overflow: hidden;
-  height: 64px;
+  height: 36px;
   .ant-menu {
-    line-height: 60px;
+    line-height: 36px;
+    background-color: #01172c;
   }
   .ant-menu-horizontal {
     border-bottom: none;
@@ -109,9 +100,13 @@
 .right-header {
   float: right;
   overflow: hidden;
-  padding: 20px;
+  padding: 10px;
   > * {
     display: inline-block;
     margin-right: 16px;
+    #joinus-button {
+      vertical-align: middle;
+      background-color: rgba(76, 175, 80, 1);
+    }
   }
 }

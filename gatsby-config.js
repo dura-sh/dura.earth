@@ -3,7 +3,7 @@ module.exports = {
     title: 'Dura.*',
     description: 'One click. One you. Everywhere.',
     author: 'Dura',
-    siteUrl: `https://dura.sh`,
+    siteUrl: `http://pro.ant.design/`,
   },
   plugins: [
     {
