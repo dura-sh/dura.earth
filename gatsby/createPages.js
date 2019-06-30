@@ -47,7 +47,7 @@ module.exports = async ({ graphql, actions }) => {
   const edges = allMarkdown.data.allMarkdownRemark.edges;
   edges.forEach(edge => {
     const { slug, underScoreCasePath } = edge.node.fields;
-    if (slug.includes('docs/') || slug.includes('/blog')) {
+    if (slug.includes('docs/')) {
       const template = docsTemplate;
       const createArticlePage = path => {
         if (underScoreCasePath !== path) {
@@ -60,7 +60,7 @@ module.exports = async ({ graphql, actions }) => {
           context: {
             slug,
             // if is docs page
-            type: slug.includes('docs/') ? '/docs/' : '/blog/',
+            type: slug.includes('docs/') ? '/docs/' : '/docs/',
           },
         });
       };
@@ -80,13 +80,7 @@ module.exports = async ({ graphql, actions }) => {
   createRedirect({
     fromPath: '/docs/',
     redirectInBrowser: true,
-    toPath: '/docs/getting-started',
-  });
-
-  createRedirect({
-    fromPath: '/blog/',
-    redirectInBrowser: true,
-    toPath: '/blog/change-theme',
+    toPath: '/docs/what-is-dura-world',
   });
   Object.keys(redirects).map(path =>
     createRedirect({

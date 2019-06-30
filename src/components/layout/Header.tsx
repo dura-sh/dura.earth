@@ -31,7 +31,7 @@ function initDocSearch(locale: 'zh-CN' | 'en-US') {
       }>
     ) {
       hits.forEach(hit => {
-        hit.url = hit.url.replace('ant.design.pro', window.location.host); // eslint-disable-line
+        hit.url = hit.url.replace('dura.earth', window.location.host); // eslint-disable-line
         hit.url = hit.url.replace('https:', window.location.protocol); // eslint-disable-line
       });
       return hits;
@@ -127,7 +127,7 @@ class Header extends React.Component<HeaderProps, HeaderState> {
         <div>
           <img
             src="https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg"
-            alt="Ant Design"
+            alt="Dura.*"
           />
           <p>
             {formatMessage({ id: 'app.publish.greeting' })}
@@ -140,8 +140,8 @@ class Header extends React.Component<HeaderProps, HeaderState> {
             </a>
             {formatMessage({ id: 'app.publish.tips' })}
             {formatMessage({ id: 'app.publish.old-version-guide' })}
-            <a target="_blank" rel="noopener noreferrer" href="https://v1.pro.ant.design">
-              v1.pro.ant.design
+            <a target="_blank" rel="noopener noreferrer" href="https://dura.earth">
+              dura.earth
             </a>
             {formatMessage({ id: 'app.publish.old-version-tips' })}
           </p>
@@ -173,10 +173,10 @@ class Header extends React.Component<HeaderProps, HeaderState> {
   };
   onVersionChange = (value: string) => {
     if (value === 'v1') {
-      window.open('https://v1.pro.ant.design/');
+      window.open('https://dura.world/');
     }
     if (value === 'v2') {
-      window.open('https://v2-pro.ant.design/');
+      window.open('https://dura.earth/');
     }
   };
   render() {
@@ -190,9 +190,7 @@ class Header extends React.Component<HeaderProps, HeaderState> {
       .slice(0, -1)
       .join('/');
     let activeMenuItem = module || 'home';
-    if (/^blog/.test(path)) {
-      activeMenuItem = 'blog';
-    } else if (/docs/.test(path)) {
+    if (/docs/.test(path)) {
       activeMenuItem = 'docs';
     } else if (path === '/') {
       activeMenuItem = 'home';
@@ -208,14 +206,14 @@ class Header extends React.Component<HeaderProps, HeaderState> {
           </Link>
         </Menu.Item>
         <Menu.Item key="docs">
-          <Link to={utils.getLocalizedPathname('/docs/getting-started', isZhCN)}>
+          <Link to={utils.getLocalizedPathname('/docs/what-is-dura-world', isZhCN)}>
             <FormattedMessage id="app.header.menu.docs" />
           </Link>
         </Menu.Item>
         {menuMode === 'inline' && (
-          <Menu.Item key="preview">
-            <a target="_blank" href="http://preview.pro.ant.design/" rel="noopener noreferrer">
-              <FormattedMessage id="app.home.preview" />
+          <Menu.Item key="joinus">
+            <Link to={utils.getLocalizedPathname('/docs/dura-procotol-network', isZhCN)}>
+              <FormattedMessage id="app.home.joinus" />
             </a>
           </Menu.Item>
         )}

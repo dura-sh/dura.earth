@@ -1,11 +1,11 @@
 {
-  "name": "dura.sh",
+  "name": "dura.world",
   "version": "0.0.1",
   "description": "site of Dura.*",
-  "homepage": "http://dura.sh/",
+  "homepage": "http://dura.earth/",
   "repository": {
     "type": "git",
-    "url": "https://github.com/dura-sh/dura.sh"
+    "url": "https://github.com/dura-sh/dura.world"
   },
   "license": "MIT",
   "scripts": {
@@ -122,6 +122,8 @@
     "stylelint-config-standard": "^18.2.0"
   },
   "title": "Dura.*",
-  "engines" : { "npm" : "<=10.16.0", "node" : "<=6.9.0" }
-
+  "engines": {
+    "npm": "<=10.16.0",
+    "node": "<=6.9.0"
+  }
 }

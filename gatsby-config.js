@@ -34,13 +34,6 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        name: '/blog',
-        path: `${__dirname}/blog/`,
-      },
-    },
-    {
       resolve: 'gatsby-transformer-remark-antd',
       options: {
         plugins: [
