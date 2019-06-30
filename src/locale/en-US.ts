@@ -9,7 +9,7 @@ export default {
     'app.header.search.doc': 'Docs',
     'app.header.search.component': 'Components',
     'app.header.menu.home': 'dura.world',
-    'app.header.menu.docs': 'dura.docs',
+    'app.header.menu.docs': 'dura.guide',
     'app.header.menu.components': 'Components',
     'app.header.menu.resource': 'Resources',
     'app.header.lang': '中文',

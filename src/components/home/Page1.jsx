@@ -31,28 +31,31 @@ const implementations = [
   {
     title: 'dura.chat',
     content:
-      'The durable communication gateway for peer-to-peer messaging. From personal calls to communitity messaging, and voip video conferencing. Secureity is a surety derived for your unique individual reality.',
+      'The durable communication gateway for peer-to-peer messaging. Private/group messages and voip calls/video conferencing. Privacy sureties from trust in others',
     src: chat,
     color: '#B757D0',
     shadowColor: 'rgba(183, 87, 208, .25)',
   },
   {
     title: 'dura.buzz',
-    content: 'Aggregated news platform',
+    content:
+      'The durable news aggrregator for your daily digest. Relavent content and recommendation as sureties dervived as your personal buzz center.',
     src: buzz,
     color: '#40bf7c',
     shadowColor: 'rgba(64, 191, 124, .25)',
   },
   {
     title: 'dura.tv',
-    content: 'Live streaming platform',
+    content:
+      'The durable live streaming platform without all the fluff. Connection is a surety when streams are peer-to-peer using distrubuted voip.',
     src: tv,
     color: '#F5222D',
     shadowColor: 'rgba(245,34,45,.25)',
   },
   {
     title: 'dura.money',
-    content: 'Money management platform',
+    content:
+      "Financial management doesn't have to be done by banks or blockchains. Manage your money, track your spending, and bullish surety in your future.",
     src: money,
     color: '#FA8C16',
     shadowColor: 'rgba(250,140,22,.25)',
@@ -235,8 +238,8 @@ class Page1 extends React.PureComponent {
             </Parallax>
           )}
           <h2>
-            Let your <span>individuality reality</span> shine as the surety for our{' '}
-            <span>durable</span> world:
+            Let your <span>individual reality</span> shine as the <a href="/docs/surety">surety</a>{' '}
+            for a <span>durable</span> world:
           </h2>
           <div className="title-line-wrapper page1-line">
             <div className="title-line" />

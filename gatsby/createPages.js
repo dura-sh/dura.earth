@@ -64,16 +64,13 @@ module.exports = async ({ graphql, actions }) => {
           },
         });
       };
-
-      // Register primary URL.
       createArticlePage(slug.replace('/index', ''));
     }
   });
-  // 首页的中文版
   const indexTemplate = resolve(__dirname, '../src/pages/index.tsx');
 
   createPage({
-    path: '/index-cn',
+    path: '/index',
     component: indexTemplate,
   });
 

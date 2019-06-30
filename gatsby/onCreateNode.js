@@ -59,10 +59,7 @@ module.exports = exports.onCreateNode = async ({ node, actions, getNode }) => {
       });
 
       if (!slug) {
-        slug = `${sourceInstanceName}/${relativePath
-          .replace('.en-US.md', '')
-          .replace('.zh-CN.md', '-cn')
-          .replace('.md', '')}`;
+        slug = `${sourceInstanceName}/${relativePath.replace('.en-US.md', '').replace('.md', '')}`;
       }
 
       createNodeField({

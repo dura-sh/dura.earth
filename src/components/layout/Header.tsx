@@ -15,11 +15,11 @@ if (typeof window !== 'undefined') {
   docSearch = require('docsearch.js'); // eslint-disable-line
 }
 
-function initDocSearch(locale: 'zh-CN' | 'en-US') {
+function initDocSearch(locale: 'en-US') {
   if (!docSearch) {
     return;
   }
-  const lang = locale === 'zh-CN' ? 'cn' : 'en';
+  const lang = locale === 'en';
   docSearch({
     apiKey: 'dfba5eddecb719460b9fd232af57748d',
     indexName: 'pro_ant_design',
@@ -74,7 +74,7 @@ class Header extends React.Component<HeaderProps, HeaderState> {
     });
     initDocSearch(intl.locale);
 
-    if (localStorage.getItem(key) !== 'true' && Date.now() < new Date('2018/9/5').getTime()) {
+    if (localStorage.getItem(key) !== 'true' && Date.now() < new Date('2019/6/30').getTime()) {
       this.infoNewVersion();
     }
 
@@ -136,7 +136,7 @@ class Header extends React.Component<HeaderProps, HeaderState> {
               rel="noopener noreferrer"
               href={formatMessage({ id: 'app.publish.url' })}
             >
-              Ant Desgin Pro {formatMessage({ id: 'app.publish.intro' })}
+              Dura.* {formatMessage({ id: 'app.publish.intro' })}
             </a>
             {formatMessage({ id: 'app.publish.tips' })}
             {formatMessage({ id: 'app.publish.old-version-guide' })}
@@ -162,18 +162,18 @@ class Header extends React.Component<HeaderProps, HeaderState> {
     const currentHref = window.location.href.substr(currentProtocol.length);
 
     if (utils.isLocalStorageNameSupported()) {
-      localStorage.setItem('locale', utils.isZhCN(pathname) ? 'en-US' : 'zh-CN');
+      localStorage.setItem('locale', 'en-US');
     }
     window.location.href =
       currentProtocol +
       currentHref.replace(
         window.location.pathname,
-        utils.getLocalizedPathname(pathname, !utils.isZhCN(pathname))
+        utils.getLocalizedPathname(pathname),
       );
   };
   onVersionChange = (value: string) => {
     if (value === 'v1') {
-      window.open('https://dura.earth/');
+      window.open('https://durachain.io/');
     }
     if (value === 'v2') {
       window.open('https://dura.earth/');
@@ -196,23 +196,21 @@ class Header extends React.Component<HeaderProps, HeaderState> {
       activeMenuItem = 'home';
     }
 
-    const isZhCN = intl.locale === 'zh-CN';
-
     const menu = [
       <Menu mode={menuMode} selectedKeys={[activeMenuItem]} id="nav" key="nav">
         <Menu.Item key="home">
-          <Link to={utils.getLocalizedPathname('/', isZhCN)}>
+          <Link to='/'>
             <FormattedMessage id="app.header.menu.home" />
           </Link>
         </Menu.Item>
         <Menu.Item key="docs">
-          <Link to={utils.getLocalizedPathname('/docs/what-is-dura-world', isZhCN)}>
+          <Link to='/docs/what-is-dura-world'>
             <FormattedMessage id="app.header.menu.docs" />
           </Link>
         </Menu.Item>
         {menuMode === 'inline' && (
           <Menu.Item key="joinus">
-            <Link to={utils.getLocalizedPathname('/docs/dura-procotol-network', isZhCN)}>
+            <Link to='/docs/dura-procotol-network'>
               <FormattedMessage id="app.home.joinus" />
             </Link>
           </Menu.Item>
@@ -257,7 +255,7 @@ class Header extends React.Component<HeaderProps, HeaderState> {
                   <a
                     id="joinus-button"
                     target="_blank"
-                    href="/docs/dura-protocol-network"
+                    href="/docs/dura-protocol-network-providers"
                     rel="noopener noreferrer"
                   >
                     <Button icon="global" size="small">

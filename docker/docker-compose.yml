@@ -1,0 +1,13 @@
+version: "3.5"
+
+services:
+  dura-world-build:
+    build: ../
+    container_name: dura-world-build
+
+  dura-world-web:
+    image: nginx
+    ports:
+      - 80:80
+    container_name: dura-world-web
+    restart: unless-stopped

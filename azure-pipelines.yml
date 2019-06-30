@@ -20,7 +20,7 @@ jobs:
         displayName: install
       - script: npm run lint
         displayName: lint
-      - script: npm run build
+      - script: npm run site
         env:
           PROGRESS: none
         displayName: build
@@ -56,7 +56,7 @@ jobs:
         env:
           PROGRESS: none
         displayName: test
-      - script: npm run build
+      - script: npm run site
         env:
           PROGRESS: none
         displayName: build

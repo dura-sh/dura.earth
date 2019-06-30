@@ -7,7 +7,7 @@ import { Badge, Row, Col, Menu, Icon } from 'antd';
 import classNames from 'classnames';
 import MobileMenu from 'rc-drawer-menu';
 import Article from './Article';
-import { isZhCN, getMenuItems, MenuDataItem, IMenuData } from '../utils';
+import { getMenuItems, MenuDataItem, IMenuData } from '../utils';
 import { IFrontmatterData } from '../../templates/docs';
 
 const { SubMenu } = Menu;
@@ -39,12 +39,12 @@ function getActiveMenuItem(props: MainContentProps) {
 
 function getModuleDataWithProps(props: MainContentProps) {
   const moduleData = props.menuList;
-  const excludedSuffix = isZhCN(props.location.pathname) ? 'zh-CN' : 'en-US';
+  const excludedSuffix = 'en-US';
   return moduleData.filter(({ filename }) => {
     if (!filename) {
       return false;
     }
-    if (!filename.includes('zh-CN') && !filename.includes('en-US')) {
+    if (!filename.includes('en-US')) {
       return true;
     }
     return filename.includes(excludedSuffix);
@@ -118,9 +118,6 @@ export default class MainContent extends React.PureComponent<MainContentProps, M
     const {
       location: { pathname },
     } = this.props;
-    if (isZhCN(pathname) && !filename.includes('-cn')) {
-      return `${filename}-cn`;
-    }
     return filename;
   };
 
@@ -132,13 +129,13 @@ export default class MainContent extends React.PureComponent<MainContentProps, M
       intl: { locale },
     } = this.context as {
       intl: {
-        locale: 'zh-CN' | 'en-US';
+        locale: 'en-US';
       };
     };
     const text = [
       <span key="english">{item.title[locale] || item.title}</span>,
-      <span className="chinese" key="chinese">
-        {locale === 'zh-CN' && item.subtitle}
+      <span key="english">
+        {locale === 'en-US' && item.subtitle}
       </span>,
     ];
 
@@ -174,7 +171,7 @@ export default class MainContent extends React.PureComponent<MainContentProps, M
       intl: { locale },
     } = this.context as {
       intl: {
-        locale: 'zh-CN' | 'en-US';
+        locale: 'en-US';
       };
     };
     if (!obj) return [];
