@@ -1,9 +1,9 @@
 module.exports = {
   siteMetadata: {
     title: 'Dura.*',
-    description: 'One click. One you. Everywhere.',
+    description: 'Individual reality. There is only one you in this world.',
     author: 'Dura',
-    siteUrl: `http://dura.earth/`,
+    siteUrl: `https://dura.earth`,
   },
   plugins: [
     {
@@ -58,8 +58,8 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
-        name: 'Dura.*',
-        short_name: 'Dura.* Doc',
+        name: 'dura',
+        short_name: 'dura',
         display: 'standalone',
         start_url: './?utm_source=homescreen',
         theme_color: '#002140',

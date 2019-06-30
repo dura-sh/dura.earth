@@ -8,7 +8,7 @@ export default {
     'app.header.search.all': 'Search in Google: ',
     'app.header.search.doc': 'Docs',
     'app.header.search.component': 'Components',
-    'app.header.menu.home': 'dura.sh',
+    'app.header.menu.home': 'dura.world',
     'app.header.menu.docs': 'dura.docs',
     'app.header.menu.components': 'Components',
     'app.header.menu.resource': 'Resources',

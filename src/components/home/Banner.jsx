@@ -24,7 +24,7 @@ function Banner(props) {
               <FormattedMessage id="app.home.claim" />
             </Button>
           </a>
-          <Link to={getLocalizedPathname('/docs/getting-started', isZhCN(location.pathname))}>
+          <Link to={getLocalizedPathname('/docs/what-is-dura-world', isZhCN(location.pathname))}>
             <Button style={{ margin: '0 16px' }} type="primary" icon="solution" ghost>
               <FormattedMessage id="app.home.understand" />
             </Button>

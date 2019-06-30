@@ -1,7 +1,7 @@
 ---
 order: 2
 title: Surety
-type: Introduction
+type: Cryptographic Ratchet
 ---
 
 # Surety: A Cryptographic Ratchet
@@ -317,14 +317,14 @@ The Surety specification (this document) is hereby placed in the public domain.
 
 ## Feedback
 
-Can be sent to surety at dura.sh.
+Can be sent to surety at dura.world.
 
 ## Acknowledgements
 
 The ratchet that Surety implements was designed by Trevor Perrin and Moxie
 Marlinspike - details at https://whispersystems.org/docs/specifications/doubleratchet/.
 
-Surety is an entirely new implementation written by the dura.sh team.
+Surety is an entirely new implementation written by the dura.world team.
 
 [curve25519]: http://cr.yp.to/ecdh.html
 [triple diffie-hellman]: https://whispersystems.org/blog/simplifying-otr-deniability/

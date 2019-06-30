@@ -173,7 +173,7 @@ class Header extends React.Component<HeaderProps, HeaderState> {
   };
   onVersionChange = (value: string) => {
     if (value === 'v1') {
-      window.open('https://dura.world/');
+      window.open('https://dura.earth/');
     }
     if (value === 'v2') {
       window.open('https://dura.earth/');
@@ -214,7 +214,7 @@ class Header extends React.Component<HeaderProps, HeaderState> {
           <Menu.Item key="joinus">
             <Link to={utils.getLocalizedPathname('/docs/dura-procotol-network', isZhCN)}>
               <FormattedMessage id="app.home.joinus" />
-            </a>
+            </Link>
           </Menu.Item>
         )}
       </Menu>,

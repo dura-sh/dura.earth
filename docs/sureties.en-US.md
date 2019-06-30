@@ -1,7 +1,7 @@
 ---
 order: 3
 title: Sureties
-type: Introduction
+type: Cryptographic Ratchet
 ---
 
 # Sureties group ratchet
