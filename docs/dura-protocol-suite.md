@@ -1,7 +1,7 @@
 ---
 order: 1
-title: Domain Model
-type: Dura Protocol Specifications
+title: Concept Model
+type: Concept Model & Protocols Specs
 ---
 
 ## Dura.\*

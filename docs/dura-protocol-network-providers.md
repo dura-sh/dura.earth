@@ -1,7 +1,7 @@
 ---
 order: 4
 title: Dura Protocol Network Providers
-type: Dura Protocol Specifications
+type: Concept Model & Protocols Specs
 ---
 
 ## Overview

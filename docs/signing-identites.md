@@ -1,7 +1,7 @@
 ---
 order: 3
 title: Signing Keys and Idenities in Surety
-type: Cryptographic Ratchet
+type: Cryptographic Premitives Sequences
 ---
 
 # Signature keys and user identity in surety

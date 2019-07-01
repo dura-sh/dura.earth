@@ -7,13 +7,9 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
     />
-    <meta name="description" content="An out-of-box UI solution for enterprise applications" />
-    <title>Ant Design Pro</title>
-    <link
-      rel="icon"
-      href="https://gw.alipayobjects.com/zos/rmsportal/IOtlElCiWVIOZqgDslYd.png"
-      type="image/x-icon"
-    />
+    <meta name="description" content="durable worldy" />
+    <title>Dura.*</title>
+    <link rel="icon" href="../images/logo.png" type="image/x-icon" />
     <script src="https://gw.alipayobjects.com/os/lib/react/16.6.3/umd/react.production.min.js"></script>
     <script src="https://gw.alipayobjects.com/os/lib/react-dom/16.6.3/umd/react-dom.production.min.js"></script>
     <script src="https://gw.alipayobjects.com/os/antv/pkg/_antv.data-set-0.8.9/dist/data-set.min.js"></script>
@@ -40,17 +36,51 @@
           }
         }
         var pathname = location.pathname;
-        function getLocalizedPathname(path) {
-          var pathname = path.startsWith('/') ? path : '/' + path;
-          return pathname;
+
+        function isZhCN(pathname) {
+          return /-cn\/?$/.test(pathname);
         }
-        if (isLocalStorageNameSupported() && pathname === '/') {
+        function getLocalizedPathname(path, zhCN) {
+          var pathname = path.startsWith('/') ? path : '/' + path;
+          if (!zhCN) {
+            // to enUS
+            return /\/?index-cn/.test(pathname) ? '/' : pathname.replace('-cn', '');
+          } else if (pathname === '/') {
+            return '/index-cn';
+          } else if (pathname.endsWith('/')) {
+            return pathname.replace(/\/$/, '-cn/');
+          }
+          return pathname + '-cn';
+        }
+        if (isLocalStorageNameSupported() && (pathname === '/' || pathname === '/index-cn')) {
           var lang =
             (window.localStorage && localStorage.getItem('locale')) ||
-            navigator.language.toLowerCase() === 'en-US';
+            (navigator.language.toLowerCase() === 'zh-cn' ? 'zh-CN' : 'en-US');
+          // safari is 'zh-cn', while other browser is 'zh-CN';
+          if ((lang === 'zh-CN') !== isZhCN(pathname)) {
+            location.pathname = getLocalizedPathname(pathname, lang === 'zh-CN');
+          }
         }
-        document.documentElement.className += 'en-us';
+        document.documentElement.className += isZhCN(pathname) ? 'zh-cn' : 'en-us';
       })();
+    </script>
+    <script>
+      if (!window.Intl) {
+        document.writeln(
+          '<script src="https://as.alipayobjects.com/g/component/intl/1.0.1/??Intl.js,locale-data/jsonp/en.js,locale-data/jsonp/zh.js">' +
+            '<' +
+            '/script>'
+        );
+      }
+      if (!window.Promise) {
+        document.writeln(
+          '<script src="https://as.alipayobjects.com/g/component/es6-promise/3.2.2/es6-promise.min.js"' +
+            '>' +
+            '<' +
+            '/' +
+            'script>'
+        );
+      }
     </script>
     <script>
       // Enable Google Analytics
@@ -69,7 +99,7 @@
           a.src = g;
           m.parentNode.insertBefore(a, m);
         })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-        ga('create', 'UA-140770510-2', 'auto');
+        ga('create', 'UA-72788897-5', 'auto');
         ga('send', 'pageview');
         /* eslint-enable */
       }

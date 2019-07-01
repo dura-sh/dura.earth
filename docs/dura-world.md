@@ -1,6 +1,6 @@
 ---
 order: 1
-title: Durable World (dura.world)
+title: Concept Model & Protocols Specs (dura.world)
 type: Dura.* Solutions (Offically Endorsed)
 ---
 

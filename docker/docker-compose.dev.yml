@@ -1,10 +1,15 @@
-version: "3.5"
+version: '3.5'
 
 services:
   dura-world-dev:
+    container_name: 'dura-world-dev'
+    image: 'dura-world-dev'
     ports:
       - 8000:8000
     build:
       context: ../
       dockerfile: Dockerfile.dev
-    container_name: dura-world-dev
+    volumes:
+      - ../src:/usr/src/app/src
+      - ../config:/usr/src/app/config
+      - ../mock:/usr/src/app/mock

@@ -1,7 +1,7 @@
 ---
 order: 2
 title: Dura Protocol
-type: Dura Protocol Specifications
+type: Concept Model & Protocols Specs
 ---
 
 ## A Replacement for the Internet

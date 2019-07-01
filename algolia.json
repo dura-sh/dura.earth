@@ -1,20 +1,14 @@
 [
   {
     "title": "Surety",
-    "subTitle": "A Cryptographic Ratchet",
+    "subTitle": "A Cryptographic Premitives Sequence",
     "url": "https://dura.earth/docs/surety",
     "rating": 1
   },
   {
     "title": "Sureties",
-    "subTitle": "A Cryptographic Ratchet",
+    "subTitle": "A Cryptographic Premitives Sequence",
     "url": "https://dura.earth/docs/sureties",
-    "rating": 1
-  },
-  {
-    "title": "Surety",
-    "subTitle": "A Cryptographic Ratchet",
-    "url": "https://dura.earth/docs/what-is-dura-world",
     "rating": 1
   }
 ]
