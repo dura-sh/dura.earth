@@ -1,8 +1,9 @@
 ---
 order: 6
-title: Finance
-type: Implementations
+title: Financial Managment Gateway (dura.money)
+type: Dura.* Solutions (Offically Endorsed)
 ---
 
 ## dura.money
+
 describe it

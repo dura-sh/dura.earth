@@ -1,8 +1,7 @@
 ---
 order: 5
 title: Durable Identity Protocol
-type: Dura Prtocol Suite
+type: Dura Protocol Specifications
 ---
 
 ## There is Only One You in This World
-

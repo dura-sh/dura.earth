@@ -23,7 +23,7 @@ function Banner(props) {
               <FormattedMessage id="app.home.claim" />
             </Button>
           </a>
-          <Link to="/docs/welcome-to-a-durable-world">
+          <Link to="/docs/welcome">
             <Button style={{ margin: '0 16px' }} type="primary" icon="solution" ghost>
               <FormattedMessage id="app.home.understand" />
             </Button>

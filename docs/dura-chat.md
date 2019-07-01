@@ -1,7 +1,7 @@
 ---
 order: 4
-title: Communcation
-type: Implementations
+title: Telecommunication Gateway (dura.chat)
+type: Dura.* Solutions (Offically Endorsed)
 ---
 
 ## dura.chat

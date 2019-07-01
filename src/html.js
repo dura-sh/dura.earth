@@ -19,7 +19,7 @@ export default function HTML(props) {
         <script
           dangerouslySetInnerHTML={{
             __html: `
-          (function () {
+          (function() {
             function isLocalStorageNameSupported() {
               var testKey = 'test';
               var storage = window.localStorage;
@@ -32,23 +32,14 @@ export default function HTML(props) {
               }
             }
             var pathname = location.pathname;
-            function getLocalizedPathname(path, enUS) {
+            function getLocalizedPathname(path) {
               var pathname = path.startsWith('/') ? path : '/' + path;
-              if (enUS) { // to enUS
-                '/';
-              } else if (pathname === '/') {
-                return '/index';
-              } else if (pathname.endsWith('/')) {
-                return pathname;
-              }
               return pathname;
             }
-            if (isLocalStorageNameSupported() && (pathname === '/' || pathname === '/index')) {
-              var lang = (window.localStorage && localStorage.getItem('locale')) || (navigator.language.toLowerCase() === 'en-US');
-              if ((lang === 'en-US')) {
-                console.log(pathname)
-                location.pathname = getLocalizedPathname(pathname, lang === 'en-US');
-              }
+            if (isLocalStorageNameSupported() && (pathname === '/')) {
+              var lang =
+                (window.localStorage && localStorage.getItem('locale')) ||
+                (navigator.language.toLowerCase() === 'en-US');
             }
             document.documentElement.className += 'en-us';
           })()

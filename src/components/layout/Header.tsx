@@ -204,13 +204,13 @@ class Header extends React.Component<HeaderProps, HeaderState> {
           </Link>
         </Menu.Item>
         <Menu.Item key="docs">
-          <Link to='/docs/what-is-dura-world'>
+          <Link to='/docs/welcome'>
             <FormattedMessage id="app.header.menu.docs" />
           </Link>
         </Menu.Item>
         {menuMode === 'inline' && (
           <Menu.Item key="joinus">
-            <Link to='/docs/dura-procotol-network'>
+            <Link to='/docs/dura-protocol-network-providers'>
               <FormattedMessage id="app.home.joinus" />
             </Link>
           </Menu.Item>

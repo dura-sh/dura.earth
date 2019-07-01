@@ -1,9 +1,9 @@
 ---
 order: 3
-title: Healthcare
-type: Implementations
+title: Healthcare Gateway (dura.health)
+type: Dura.* Solutions (Offically Endorsed)
 ---
 
 ## dura.health
-describe it
 
+describe it

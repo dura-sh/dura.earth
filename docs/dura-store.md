@@ -1,8 +1,9 @@
 ---
 order: 8
-title: Database Server
-type: Implementations
+title: Deployable Database Server (dura.store)
+type: Dura.* Solutions (Offically Endorsed)
 ---
 
 ## dura.tv
+
 describe it

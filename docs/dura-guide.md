@@ -1,9 +1,9 @@
 ---
-order: 1
-title: Durable World (dura.world)
+order: 9
+title: How-To Guides Curator (dura.guide)
 type: Dura.* Solutions (Offically Endorsed)
 ---
 
-## dura.world
+## dura.guide
 
 describe it

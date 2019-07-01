@@ -1,7 +1,7 @@
 ---
 order: 2
 title: Surety
-type: Cryptography
+type: Cryptographic Ratchet
 ---
 
 # Surety: A Cryptographic Ratchet

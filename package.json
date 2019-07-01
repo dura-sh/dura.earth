@@ -10,7 +10,7 @@
   "license": "MIT",
   "scripts": {
     "build": "gatsby build",
-    "dev": "rm -rf .cache && gatsby develop",
+    "dev": "rm -rf .cache public && gatsby develop",
     "lint": "npm run lint:es && npm run lint:style",
     "lint-staged": "lint-staged",
     "lint-staged:js": "eslint --ext .js",
@@ -68,6 +68,7 @@
     "commander": "~2.17.0",
     "concurrently": "^3.5.0",
     "cross-env": "^5.1.1",
+    "debug": "^4.1.1",
     "eslint": "^5.3.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-prettier": "^2.9.0",
