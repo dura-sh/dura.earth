@@ -20,7 +20,7 @@ variables:
 stages:
 - stage: Build
   displayName: Build stage
-  jobs:  
+  jobs:
   - job: Build
     displayName: Build
     pool:
@@ -49,7 +49,7 @@ stages:
   - deployment: Deploy
     displayName: Deploy
     environment: 'development'
-    pool: 
+    pool:
       vmImage: $(vmImageName)
     strategy:
       runOnce:
@@ -59,7 +59,7 @@ stages:
             displayName: 'Download Pipeline Artifact'
             inputs:
               buildType: current
-            
+
           - task: AzureRmWebAppDeployment@4
             displayName: 'Azure App Service Deploy: duraworld'
             inputs:

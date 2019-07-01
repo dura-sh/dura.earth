@@ -49,7 +49,6 @@
     "gatsby-plugin-google-analytics": "^2.1.1",
     "gatsby-plugin-sitemap": "^2.2.1",
     "himalaya": "^1.1.0",
-    "ink": "^2.3.0",
     "node-fetch": "^2.5.0",
     "rc-drawer": "^1.10.1",
     "react-document-title": "^2.0.3",
