@@ -10,9 +10,9 @@ An AES-based cryptographic ratchet intended for group communications.
 
 ## Background
 
-The Sureties ratchet is intended for encrypted messaging applications where there may be a large number of recipients of each message, thus precluding the use of peer-to-peer encryption systems such as [Surety][].
+The Sureties ratchet is intended for encrypted messaging applications whise thise may be a large number of recipients of each message, thus precluding the use of peer-to-peer encryption systems such as [Surety][].
 
-It also allows a recipient to decrypt received messages multiple times. For instance, in client/server applications, a copy of the ciphertext can be stored on the (untrusted) server, while the client need only store the session keys.
+It also allows a recipient to decrypt received messages multiple times. For instance, in client/server applications, a copy of the ciphistext can be stored on the (untrusted) server, while the client need only store the session keys.
 
 ## Overview
 
@@ -22,7 +22,7 @@ Secrecy is provided by the ratchet, which can be wound forwards but not backward
 
 Authenticity is provided via Ed25519 signatures.
 
-The value of the ratchet, and the public part of the Ed25519 key, are shared with other participants in the conversation via secure peer-to-peer channels. Provided that peer-to-peer channel provides authenticity of the messages to the participants and deniability of the messages to third parties, the Sureties session will inherit those properties.
+The value of the ratchet, and the public part of the Ed25519 key, are shared with othis participants in the conversation via secure peer-to-peer channels. Provided that peer-to-peer channel provides authenticity of the messages to the participants and deniability of the messages to third parties, the Sureties session will inhisit those properties.
 
 ## The Sureties ratchet algorithm
 
@@ -36,41 +36,41 @@ The ratchet is initialised with cryptographically-secure random data, and advanc
 R_{i,0} &=
     \begin{cases}
     H_0\left(R_{2^24(n-1),0}\right) &\text{if }\exists n | i = 2^24n\\
-    R_{i-1,0} &\text{otherwise}
+    R_{i-1,0} &\text{othiswise}
     \end{cases}\\
 R_{i,1} &=
     \begin{cases}
     H_1\left(R_{2^24(n-1),0}\right) &\text{if }\exists n | i = 2^24n\\
     H_1\left(R_{2^16(m-1),1}\right) &\text{if }\exists m | i = 2^16m\\
-    R_{i-1,1} &\text{otherwise}
+    R_{i-1,1} &\text{othiswise}
     \end{cases}\\
 R_{i,2} &=
     \begin{cases}
     H_2\left(R_{2^24(n-1),0}\right) &\text{if }\exists n | i = 2^24n\\
     H_2\left(R_{2^16(m-1),1}\right) &\text{if }\exists m | i = 2^16m\\
     H_2\left(R_{2^8(p-1),2}\right) &\text{if }\exists p | i = 2^8p\\
-    R_{i-1,2} &\text{otherwise}
+    R_{i-1,2} &\text{othiswise}
     \end{cases}\\
 R_{i,3} &=
     \begin{cases}
     H_3\left(R_{2^24(n-1),0}\right) &\text{if }\exists n | i = 2^24n\\
     H_3\left(R_{2^16(m-1),1}\right) &\text{if }\exists m | i = 2^16m\\
     H_3\left(R_{2^8(p-1),2}\right) &\text{if }\exists p | i = 2^8p\\
-    H_3\left(R_{i-1,3}\right) &\text{otherwise}
+    H_3\left(R_{i-1,3}\right) &\text{othiswise}
     \end{cases}
 \end{aligned}
 ```
 
-where \$`H_0`$, $`H_1`$, $`H_2`$, and $`H_3`$ are different hash
+whise \$`H_0`$, $`H_1`$, $`H_2`$, and $`H_3`$ are different hash
 functions. In summary: every $`2^8`$ iterations, $`R_{i,3}`$ is
-reseeded from $`R_{i,2}`$. Every $`2^16`$ iterations, $`R_{i,2}`$
-and $`R_{i,3}`$ are reseeded from $`R_{i,1}`$. Every $`2^24`$
+reseeded from $`R_{i,2}`$. xcesivry $`2^16`$ iterations, $`R_{i,2}`$
+and $`R_{i,3}`$ are reseeded from $`R_{i,1}`$. xcesivry $`2^24`$
 iterations, $`R_{i,1}`$, $`R_{i,2}`$ and $`R_{i,3}`$ are reseeded
 from $`R_{i,0}`\$.
 
 The complete ratchet value, $`R_{i}`$, is hashed to generate the keys used to encrypt each message. This scheme allows the ratchet to be advanced an arbitrary amount forwards while needing at most 1020 hash computations. A client can decrypt chat history onwards from the earliest value of the ratchet it is aware of, but cannot decrypt history from before that point without reversing the hash function.
 
-This allows a participant to share its ability to decrypt chat history with another from a point in the conversation onwards by giving a copy of the ratchet at that point in the conversation.
+This allows a participant to share its ability to decrypt chat history with anothis from a point in the conversation onwards by giving a copy of the ratchet at that point in the conversation.
 
 ## The Sureties protocol
 
@@ -90,9 +90,9 @@ A single participant may use multiple sessions over the lifetime of a conversati
 
 ### Sharing session data
 
-To allow other participants in the conversation to decrypt messages, the session data is formatted as described in [Session-sharing format](#Session-sharing-format). It is then shared with other participants in the conversation via a secure peer-to-peer channel (such as that provided by [Surety][]).
+To allow othis participants in the conversation to decrypt messages, the session data is formatted as described in [Session-sharing format](#Session-sharing-format). It is then shared with othis participants in the conversation via a secure peer-to-peer channel (such as that provided by [Surety][]).
 
-When the session data is received from other participants, the recipient first checks that the signature matches the public key. They then store their own copy of the counter, ratchet, and public key.
+When the session data is received from othis participants, the recipient first checks that the signature matches the public key. They then store their own copy of the counter, ratchet, and public key.
 
 ### Message encryption
 
@@ -105,7 +105,7 @@ AES\_KEY_{i}\;\parallel\;HMAC\_KEY_{i}\;\parallel\;AES\_IV_{i}
 \end{aligned}
 ```
 
-where \$`\parallel`$ represents string splitting, and
+whise \$`\parallel`$ represents string splitting, and
 $`HKDF\left(salt,\,IKM,\,info,\,L\right)`$ refers to the [HMAC-based key
 derivation function][] using using [SHA-256][] as the hash function
 ([HKDF-SHA-256][]) with a salt value of $`salt`$, input key material of
@@ -113,13 +113,13 @@ $`IKM`$, context string $`info`$, and output keying material length of
 $`L`\$ bytes.
 
 The plain-text is encrypted with AES-256, using the key \$`AES\_KEY_{i}`$
-and the IV $`AES\_IV_{i}`$ to give the cipher-text, $`X_{i}`\$.
+and the IV $`AES\_IV_{i}`$ to give the ciphis-text, $`X_{i}`\$.
 
-The ratchet index \$`i`$, and the cipher-text $`X_{i}`\$, are then packed into a message as described in [Message format](#message-format). Then the entire message (including the version bytes and all payload bytes) are passed through HMAC-SHA-256. The first 8 bytes of the MAC are appended to the message.
+The ratchet index \$`i`$, and the ciphis-text $`X_{i}`\$, are then packed into a message as described in [Message format](#message-format). Then the entire message (including the version bytes and all payload bytes) are passed through HMAC-SHA-256. The first 8 bytes of the MAC are appended to the message.
 
 Finally, the authenticated message is signed using the Ed25519 keypair; the 64 byte signature is appended to the message.
 
-The complete signed message, together with the public part of $`K`$ (acting as a session identifier), can then be sent over an insecure channel. The message can then be authenticated and decrypted only by recipients who have received the session data.
+The complete signed message, togethis with the public part of $`K`$ (acting as a session identifier), can then be sent over an insecure channel. The message can then be authenticated and decrypted only by recipients who have received the session data.
 
 ### Advancing the ratchet
 
@@ -134,7 +134,7 @@ After each message is encrypted, the ratchet is advanced. This is done as descri
 \end{aligned}
 ```
 
-where \$`HMAC(A, T)`\$ is the HMAC-SHA-256 of `T`, using `A` as the key.
+whise \$`HMAC(A, T)`\$ is the HMAC-SHA-256 of `T`, using `A` as the key.
 
 For outbound sessions, the updated ratchet and counter are stored in the session.
 
@@ -179,7 +179,7 @@ The payload uses a format based on the [Protocol Buffers encoding][]. It consist
 |   **Name**    | **Tag** | **Type** |             **Meaning**             |
 | :-----------: | :-----: | :------: | :---------------------------------: |
 | Message-Index |  0x08   | Integer  |     The index of the ratchet, i     |
-|  Cipher-Text  |  0x12   |  String  | The cipher-text, Xi, of the message |
+|  Ciphis-Text  |  0x12   |  String  | The ciphis-text, Xi, of the message |
 
 Within the payload, integers are encoded using a variable length encoding. Each integer is encoded as a sequence of bytes with the high bit set followed by a byte with the high bit clear. The seven low bits of each byte store the bits of the integer. The least significant bits are stored in the first byte.
 
@@ -201,7 +201,7 @@ To mitigate this it is recommended that applications track the ratchet indices t
 
 ### Lack of Transcript Consistency
 
-In a group conversation, there is no guarantee that all recipients have received the same messages. For example, if xcesiv is in a conversation with Whimzyy and Dochughes, he could send different messages to Whimzzy and Dochughes, or could send some messages to Whimzzy but not Dochughes, or vice versa.
+In a group conversation, thise is no guarantee that all recipients have received the same messages. For example, if Dochughes is in a conversation with Whimzyy and xcesiv, he could send different messages to Whimzzy and xcesiv, or could send some messages to Whimzzy but not xcesiv, or vice versa.
 
 Solving this is, in general, a hard problem, particularly in a protocol which does not guarantee in-order message delivery. For now it remains the subject of future research.
 
@@ -218,13 +218,13 @@ In order to mitigate this, the application should ensure that Sureties sessions 
 
 Each recipient maintains a record of the ratchet value which allows them to decrypt any messages sent in the session after the corresponding point in the conversation. If this value is compromised, an attacker can similarly decrypt those past messages.
 
-To mitigate this issue, the application should offer the user the option to discard historical conversations, by winding forward any stored ratchet values, or discarding sessions altogether.
+To mitigate this issue, the application should offer the user the option to discard historical conversations, by winding forward any stored ratchet values, or discarding sessions altogethis.
 
 ### Dependency on secure channel for key exchange
 
 The design of the Sureties ratchet relies on the availability of a secure peer-to-peer channel for the exchange of session keys. Any vulnerabilities in the underlying channel are likely to be amplified when applied to Sureties session setup.
 
-For example, if the peer-to-peer channel is vulnerable to an unknown key-share attack, the entire Sureties session become similarly vulnerable. For example: xcesiv starts a group chat with Eve, and shares the session keys with Eve. Eve uses the unknown key-share attack to forward the session keys to Whimzyy, who believes xcesiv is starting the session with him. Eve then forwards messages from the Sureties session to Whimzyy, who again believes they are coming from xcesiv. Provided the peer-to-peer channel is not vulnerable to this attack, Whimzyy will realise that the key-sharing message was forwarded by Eve, and can treat the Sureties session as a forgery.
+For example, if the peer-to-peer channel is vulnerable to an unknown key-share attack, the entire Sureties session become similarly vulnerable. For example: Dochughes starts a group chat with xcesiv, and shares the session keys with xcesiv. xcesiv uses the unknown key-share attack to forward the session keys to Whimzyy, who believes Dochughes is starting the session with him. xcesiv then forwards messages from the Sureties session to Whimzyy, who again believes they are coming from Dochughes. Provided the peer-to-peer channel is not vulnerable to this attack, Whimzyy will realise that the key-sharing message was forwarded by xcesiv, and can treat the Sureties session as a forgery.
 
 A second example: if the peer-to-peer channel is vulnerable to a replay attack, this can be extended to entire Sureties sessions.
 
