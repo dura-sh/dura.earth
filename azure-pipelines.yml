@@ -63,11 +63,13 @@ stages:
           - task: AzureRmWebAppDeployment@4
             displayName: 'Azure App Service Deploy: duraworld'
             inputs:
+              ConnectionType: 'AzureRM'
+              image: 'duraworld'
               azureSubscription: $(azureSubscription)
               appType: webAppLinux
               WebAppName: $(webAppName)
               packageForLinux: '$(System.ArtifactsDirectory)/drop/$(Build.BuildId).zip'
-              RuntimeStack: 'NODE|10.10'
+              RuntimeStack: 'NODE|lts'
               StartupCommand: 'npm run start'
               ScriptType: 'Inline Script'
               InlineScript: |
