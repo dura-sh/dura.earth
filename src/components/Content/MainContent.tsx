@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 import { Badge, Row, Col, Menu, Icon } from 'antd';
 import classNames from 'classnames';
-import MobileMenu from 'rc-drawer-menu';
+import MobileMenu from 'rc-drawer';
 import Article from './Article';
 import { getMenuItems, MenuDataItem, IMenuData } from '../utils';
 import { IFrontmatterData } from '../../templates/docs';
