@@ -10,7 +10,7 @@
   "license": "MIT",
   "scripts": {
     "build": "gatsby build",
-    "dev": "rm -rf .cache public node_modules && gatsby develop",
+    "dev": "rm -rf .cache public node_modules && npm install && gatsby develop",
     "docker:dev": "docker-compose -f ./docker/docker-compose.dev.yml up",
     "docker:down": "docker-compose -f ./docker/docker-compose.dev.yml down",
     "docker:push": "npm run docker-hub:build && npm run docker:tag && docker push durash/world",
