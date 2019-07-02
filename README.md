@@ -21,3 +21,7 @@ Assuming you're in the proper directory and have installed dependencies, you can
 $ npm run site
 $ npm run server
 ```
+
+## Contributing
+
+If you wish to contribute please contact us.
