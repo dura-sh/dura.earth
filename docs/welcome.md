@@ -1,10 +1,10 @@
 ---
 order: 1
-title: Overview
-type: General Introduction
+title: Weclome
+type: Basic Overview
 ---
 
-## General Introduction
+## Introduction
 
 say hi
 

@@ -1,7 +1,7 @@
 ---
 order: 3
 title: Dura Protocol Network
-type: Concept Model & Protocols Specs
+type: Model & Specifications
 ---
 
 ## The Network Result from the Dura Protocol

@@ -1,7 +1,7 @@
 ---
 order: 7
 title: UI Design Toolbox (dura.design)
-type: Dura.* Solutions (Offically Endorsed)
+type: Available Services
 ---
 
 ## dura.design

@@ -1,7 +1,7 @@
 ---
 order: 5
 title: Live Streaming Gateway (dura.tv)
-type: Dura.* Solutions (Offically Endorsed)
+type: Available Services
 ---
 
 ## dura.tv

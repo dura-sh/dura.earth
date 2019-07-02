@@ -1,7 +1,7 @@
 ---
 order: 3
-title: Distributed Ledger Technology
-type: General Introduction
+title: Distributed Ledgers
+type: Basic Overview
 ---
 
 ## DLT does not mean Blockchain

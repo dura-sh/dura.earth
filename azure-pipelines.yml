@@ -71,4 +71,5 @@ stages:
                     ScriptType: 'Inline Script'
                     InlineScript: |
                       npm install
-                      npm run build --if-present
+                      npm run site
+                      npm run serve

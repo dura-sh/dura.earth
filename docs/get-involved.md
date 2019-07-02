@@ -1,7 +1,7 @@
 ---
 order: 4
-title: Dura Protocol Network Providers
-type: Concept Model & Protocols Specs
+title: Get Involved
+type: Basic Overview
 ---
 
 ## Overview

@@ -1,7 +1,7 @@
 ---
 order: 2
 title: Individual Reality
-type: General Introduction
+type: Basic Overview
 ---
 
 ## Take Your Individual Back From Big Brothis

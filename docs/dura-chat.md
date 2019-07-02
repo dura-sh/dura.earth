@@ -1,7 +1,7 @@
 ---
 order: 4
 title: Telecommunication Gateway (dura.chat)
-type: Dura.* Solutions (Offically Endorsed)
+type: Available Services
 ---
 
 ## dura.chat

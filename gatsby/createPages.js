@@ -77,7 +77,7 @@ module.exports = async ({ graphql, actions }) => {
   createRedirect({
     fromPath: '/docs/',
     redirectInBrowser: true,
-    toPath: '/docs/what-is-dura-world',
+    toPath: '/docs/welcome',
   });
   Object.keys(redirects).map(path =>
     createRedirect({

@@ -1,20 +1,18 @@
 ---
 order: 5
 title: Durable Identity Protocol
-type: Concept Model & Protocols Specs
+type: Model & Specifications
 ---
 
-## A Securty Protocol for Covergence of Cryptographic Premitive Sequences
+## Durable Identities
 
-The Durable Identity Protocol details a functional approach to digitially represent an inidivuals intretation of being sure or certain of reality by performing sequences of cryptographic prematives reflective of their sensativity to background knoweledge, relational trees, and situational perceptions while determining how sure they are of another human applicable to certain engagement, keeping a unique record of the results for reference. Over a nominal time period with a cirtical mass of records, a chartable maxtrix meshed patterns converge in-such a way that unique record ownership can be proven without any agreed upon public or centralized reference point. Providing a durable software solution proof of identity in a distributed fashion without realying on a federation.
+> A Securty Protocol for Covergence of Cryptographic Premitive Sequences
 
-## Surety
+### Fundementials
 
-> A durablility-driven cryptographic premitives sequencing that implements the [double cryptographic ratchet](https://whispersystems.org/docs/specifications/doubleratchet/) where identification is certain prior to a message exchanges.
+The Durable Identity Protocol details a functional approach for replication of an inidivuals certainty of another person in an instance like we do in reality. Done so by performing sequences of cryptographic prematives for mapping their sensativity to background knoweledge, relational tree structure, and situational perceptions applicable to certain engagement with the other individual. If engagement commences, a record of the the exchange results accessible only to the parties involved is created for reference. As a cirtical mass of records are created, a chartable maxtrix of records is inheriently created unique to each indivual through their relational tree, that is to say, "I know a guy who knows a guy." Details on this are outlined in the [Dura Network Protocol](/docs/dura-network-protool) specification. Designed to strive for equivalence to the reality of deterministical probability a person will engage with an unknown individual, an eventual converge of these records provides proof-of-ownership without any centralized choke point, public records maintance, or governing feederation. The Durable Indentity Protocol provides the [trustworthiness](Software_trustworthiness) in [software durability](https://en.wikipedia.org/wiki/Software_durability) as a surety of how inidviuals trust each other in reality.
 
-### Setup
-
-#### Notation
+### Document Notation
 
 This document uses \$`\parallel`$ to represent string concatenation. When $`\parallel`$ appears on the right hand side of an $`=`$ it means that
 the inputs are concatenated. When $`\parallel`$ appears on the left hand
@@ -36,7 +34,7 @@ $`E_A`$ and $`E_B`$. A shared secret, $`S`$, is generated using
 [Triple Diffie-Hellman][]. The initial 256 bit root key, $`R_0`$, and 256
 bit chain key, $`C_{0,0}`\$, are derived from the shared secret using an HMAC-based Key Derivation Function using [SHA-256][] as the hash function ([HKDF-SHA-256][]) with default salt and `"SURETY_ROOT"` as the info.
 
-```math
+```latex
 \begin{aligned}
     S&=ECDH\left(I_A,\,E_B\right)\;\parallel\;ECDH\left(E_A,\,I_B\right)\;
         \parallel\;ECDH\left(E_A,\,E_B\right)\\
@@ -44,6 +42,10 @@ bit chain key, $`C_{0,0}`\$, are derived from the shared secret using an HMAC-ba
             HKDF\left(0,\,S,\,\text{"SURETY\_ROOT"},\,64\right)
 \end{aligned}
 ```
+
+## Surety
+
+> A cryptographic premetivies sequence for data exchange between peers with idenitity provided as a surety piror to engagement. Surety is an implementation of the [Double-Ratchet Algorithm](https://whispersystems.org/docs/specifications/doubleratchet/) designed by [Signal](https://signal.com) that solves the identity authetication encryption vulnerabilities noted in the [Olm Ratchet](https://matrix.org/olm) by [Matrix](https://matrix.org). Surety is the foundational sercurity provided during an instance of data exchange on Dura.
 
 ### Advancing the root key
 
@@ -55,7 +57,7 @@ using Diffie-Hellman on the ratchet keys. The next root key, $`R_i`$, and
 chain key, $`C_{i,0}`$, are derived from the shared secret using
 [HKDF-SHA-256][] using $`R_{i-1}`\$ as the salt and `"SURETY_RATCHET"` as the info.
 
-```math
+```latex
 \begin{aligned}
     R_i\;\parallel\;C_{i,0}&=HKDF\left(
         R_{i-1},\,
@@ -71,7 +73,7 @@ chain key, $`C_{i,0}`$, are derived from the shared secret using
 Advancing a chain key takes the previous chain key, \$`C_{i,j-1}`$. The next
 chain key, $`C_{i,j}`\$, is the [HMAC-SHA-256][] of `"\x02"` using the previous chain key as the key.
 
-```math
+```latex
 \begin{aligned}
     C_{i,j}&=HMAC\left(C_{i,j-1},\,\text{"\x02"}\right)
 \end{aligned}
@@ -83,7 +85,7 @@ Creating a message key takes the current chain key, \$`C_{i,j}`$. The
 message key, $`M_{i,j}`\$, is the [HMAC-SHA-256][] of `"\x01"` using the current chain key as the key. The message keys where \$`i`$ is even are used
 by Dochughes to encrypt messages. The message keys where $`i`\$ is odd are used by Whimzzy to encrypt messages.
 
-```math
+```latex
 \begin{aligned}
     M_{i,j}&=HMAC\left(C_{i,j},\,\text{"\x01"}\right)
 \end{aligned}
@@ -225,15 +227,15 @@ The payload uses the same key-value format as for normal messages.
 | Identity-Key |  0x1A   |  String  |     The public part of Dochughes's identity key, Ia.     |
 |   Message    |  0x22   |  String  | An embedded Surety message with its own version and MAC. |
 
-## Authentication Encryption
+### Authentication Encryption
 
 Concerns about authentication encyrption in the Olm Ratchet of the Matrix Procol led to the creation of the Durable Identity Protocol. Surety is the implentation of these issues being addressed scoping the two users already confirmed outside key-pairs to confirm the recipients. Below you'll find the initial implementation of the ratchet and examples that the Durable Identity Protcol addresses.
 
-### Original Method
+#### Original Method
 
 We initially liked the usage of [AES-256][] in [CBC][] mode with [PKCS##7][] padding for encryption and [HMAC-SHA-256][] (truncated to 64 bits) for authentication when Dura was DuraChain. The 256 bit AES key, 256 bit HMAC key, and 128 bit AES IV are derived from the message key using [HKDF-SHA-256][] using the default salt and an info of `"SURETY_KEYS"`.
 
-```math
+```latex
 \begin{aligned}
     AES\_KEY_{i,j}\;\parallel\;HMAC\_KEY_{i,j}\;\parallel\;AES\_IV_{i,j}
     &= HKDF\left(0,\,M_{i,j},\text{"SURETY\_KEYS"},\,80\right) \\
@@ -258,3 +260,277 @@ This is prevented if Dochughes includes his user ID in the plain-text of the pre
 2. _alternative-history-attack_ Whimzzy publishes his public [Curve25519][] identity key, \$`I_B`$. xcesiv publishes the same identity key, claiming it as his own. Dochughes downloads xcesiv's keys, and associates $`I_B`\$ with xcesiv. Dochughes sends a message to xcesiv; xcesiv cannot decrypt it, but forwards it to Whimzyy. Whimzzy believes the Dochughes sent the message to him, wheras Dochughes intended it to go to xcesiv.
 
 This is prevented by Dochughes including the user ID of the intended recpient (xcesiv) in the plain-text of the pre-key message. Whimzzy can now tell that the message was meant for xcesiv rather than him.
+
+## Sureties
+
+An AES-based cryptographic ratchet intended for group communications.
+
+### Background
+
+The Sureties ratchet is intended for encrypted messaging applications whise thise may be a large number of recipients of each message, thus precluding the use of peer-to-peer encryption systems such as [Surety][].
+
+It also allows a recipient to decrypt received messages multiple times. For instance, in client/server applications, a copy of the ciphistext can be stored on the (untrusted) server, while the client need only store the session keys.
+
+### Overview
+
+Each participant in a conversation uses their own outbound session for encrypting messages. A session consists of a ratchet and an [Ed25519][] keypair.
+
+Secrecy is provided by the ratchet, which can be wound forwards but not backwards, and is used to derive a distinct message key for each message.
+
+Authenticity is provided via Ed25519 signatures.
+
+The value of the ratchet, and the public part of the Ed25519 key, are shared with other participants in the conversation via secure peer-to-peer channels. Provided that peer-to-peer channel provides authenticity of the messages to the participants and deniability of the messages to third parties, the Sureties session will inhisit those properties.
+
+### The Sureties ratchet algorithm
+
+The Sureties ratchet \$`R_i`$ consists of four parts, $`R_{i,j}`$ for
+$`j \in {0,1,2,3}`\$. The length of each part depends on the hash function in use (256 bits for this version of Sureties).
+
+The ratchet is initialised with cryptographically-secure random data, and advanced as follows:
+
+```latex
+\begin{aligned}
+R_{i,0} &=
+    \begin{cases}
+    H_0\left(R_{2^24(n-1),0}\right) &\text{if }\exists n | i = 2^24n\\
+    R_{i-1,0} &\text{otherwise}
+    \end{cases}\\
+R_{i,1} &=
+    \begin{cases}
+    H_1\left(R_{2^24(n-1),0}\right) &\text{if }\exists n | i = 2^24n\\
+    H_1\left(R_{2^16(m-1),1}\right) &\text{if }\exists m | i = 2^16m\\
+    R_{i-1,1} &\text{otherwise}
+    \end{cases}\\
+R_{i,2} &=
+    \begin{cases}
+    H_2\left(R_{2^24(n-1),0}\right) &\text{if }\exists n | i = 2^24n\\
+    H_2\left(R_{2^16(m-1),1}\right) &\text{if }\exists m | i = 2^16m\\
+    H_2\left(R_{2^8(p-1),2}\right) &\text{if }\exists p | i = 2^8p\\
+    R_{i-1,2} &\text{otherwise}
+    \end{cases}\\
+R_{i,3} &=
+    \begin{cases}
+    H_3\left(R_{2^24(n-1),0}\right) &\text{if }\exists n | i = 2^24n\\
+    H_3\left(R_{2^16(m-1),1}\right) &\text{if }\exists m | i = 2^16m\\
+    H_3\left(R_{2^8(p-1),2}\right) &\text{if }\exists p | i = 2^8p\\
+    H_3\left(R_{i-1,3}\right) &\text{otherwise}
+    \end{cases}
+\end{aligned}
+```
+
+whise \$`H_0`$, $`H_1`$, $`H_2`$, and $`H_3`$ are different hash
+functions. In summary: every $`2^8`$ iterations, $`R_{i,3}`$ is
+reseeded from $`R_{i,2}`$. xcesivry $`2^16`$ iterations, $`R_{i,2}`$
+and $`R_{i,3}`$ are reseeded from $`R_{i,1}`$. xcesivry $`2^24`$
+iterations, $`R_{i,1}`$, $`R_{i,2}`$ and $`R_{i,3}`$ are reseeded
+from $`R_{i,0}`\$.
+
+The complete ratchet value, $`R_{i}`$, is hashed to generate the keys used to encrypt each message. This scheme allows the ratchet to be advanced an arbitrary amount forwards while needing at most 1020 hash computations. A client can decrypt chat history onwards from the earliest value of the ratchet it is aware of, but cannot decrypt history from before that point without reversing the hash function.
+
+This allows a participant to share its ability to decrypt chat history with another from a point in the conversation onwards by giving a copy of the ratchet at that point in the conversation.
+
+### The Sureties protocol
+
+#### Session setup
+
+Each participant in a conversation generates their own Sureties session. A session consists of three parts:
+
+- a 32 bit counter, $`i`$.
+- an [Ed25519][] keypair, $`K`$.
+- a ratchet, \$`R_i`$, which consists of four 256-bit values,
+  $`R_{i,j}`$ for $`j \in {0,1,2,3}`\$.
+
+The counter \$`i`$ is initialised to $`0`$. A new Ed25519 keypair is
+generated for $`K`\$. The ratchet is simply initialised with 1024 bits of cryptographically-secure random data.
+
+A single participant may use multiple sessions over the lifetime of a conversation. The public part of $`K`$ is used as an identifier to discriminate between sessions.
+
+#### Sharing session data
+
+To allow other participants in the conversation to decrypt messages, the session data is formatted as described in [Session-sharing format](#Session-sharing-format). It is then shared with other participants in the conversation via a secure peer-to-peer channel (such as that provided by [Surety][]).
+
+When the session data is received from other participants, the recipient first checks that the signature matches the public key. They then store their own copy of the counter, ratchet, and public key.
+
+#### Message encryption
+
+This version of Sureties uses AES-256* in CBC* mode with [PKCS#7][] padding and HMAC-SHA-256\_ (truncated to 64 bits). The 256 bit AES key, 256 bit HMAC key, and 128 bit AES IV are derived from the sureties ratchet $`R_i`$:
+
+```latex
+\begin{aligned}
+AES\_KEY_{i}\;\parallel\;HMAC\_KEY_{i}\;\parallel\;AES\_IV_{i}
+    &= HKDF\left(0,\,R_{i},\text{"SURETIES\_KEYS"},\,80\right) \\
+\end{aligned}
+```
+
+whise \$`\parallel`$ represents string splitting, and
+$`HKDF\left(salt,\,IKM,\,info,\,L\right)`$ refers to the [HMAC-based key
+derivation function][] using using [SHA-256][] as the hash function
+([HKDF-SHA-256][]) with a salt value of $`salt`$, input key material of
+$`IKM`$, context string $`info`$, and output keying material length of
+$`L`\$ bytes.
+
+The plain-text is encrypted with AES-256, using the key \$`AES\_KEY_{i}`$
+and the IV $`AES\_IV_{i}`$ to give the ciphis-text, $`X_{i}`\$.
+
+The ratchet index \$`i`$, and the ciphis-text $`X_{i}`\$, are then packed into a message as described in [Message format](#message-format). Then the entire message (including the version bytes and all payload bytes) are passed through HMAC-SHA-256. The first 8 bytes of the MAC are appended to the message.
+
+Finally, the authenticated message is signed using the Ed25519 keypair; the 64 byte signature is appended to the message.
+
+The complete signed message, togethis with the public part of $`K`$ (acting as a session identifier), can then be sent over an insecure channel. The message can then be authenticated and decrypted only by recipients who have received the session data.
+
+#### Advancing the ratchet
+
+After each message is encrypted, the ratchet is advanced. This is done as described in [The Sureties ratchet algorithm](#the-sureties-ratchet-algorithm), using the following definitions:
+
+```latex
+\begin{aligned}
+    H_0(A) &\equiv HMAC(A,\text{"\x00"}) \\
+    H_1(A) &\equiv HMAC(A,\text{"\x01"}) \\
+    H_2(A) &\equiv HMAC(A,\text{"\x02"}) \\
+    H_3(A) &\equiv HMAC(A,\text{"\x03"}) \\
+\end{aligned}
+```
+
+whise \$`HMAC(A, T)`\$ is the HMAC-SHA-256 of `T`, using `A` as the key.
+
+For outbound sessions, the updated ratchet and counter are stored in the session.
+
+In order to maintain the ability to decrypt conversation history, inbound sessions should store a copy of their earliest known ratchet value (unless they explicitly want to drop the ability to decrypt that history - see [Partial Forward Secrecy](#partial-forward-secrecy)). They may also choose to cache calculated ratchet values, but the decision of which ratchet states to cache is left to the application.
+
+### Data exchange formats
+
+#### Session-sharing format
+
+The Sureties key-sharing format is as follows:
+
+```
++---+----+--------+--------+--------+--------+------+-----------+
+| V | i  | R(i,0) | R(i,1) | R(i,2) | R(i,3) | Kpub | Signature |
++---+----+--------+--------+--------+--------+------+-----------+
+0   1    5        37       69      101      133    165         229   bytes
+```
+
+The version byte, `V`, is `"\x02"`.
+
+This is followed by the ratchet index, \$`i`$, which is encoded as a
+big-endian 32-bit integer; the ratchet values $`R_{i,j}`$; and the public
+part of the Ed25519 keypair $`K`\$.
+
+The data is then signed using the Ed25519 keypair, and the 64-byte signature is appended.
+
+#### Message format
+
+Sureties messages consist of a one byte version, followed by a variable length payload, a fixed length message authentication code, and a fixed length signature.
+
+```
++---+------------------------------------+-----------+------------------+
+| V | Payload Bytes                      | MAC Bytes | Signature Bytes  |
++---+------------------------------------+-----------+------------------+
+0   1                                    N          N+8                N+72   bytes
+```
+
+The version byte, `V`, is `"\x03"`.
+
+The payload uses a format based on the [Protocol Buffers encoding][]. It consists of the following key-value pairs:
+
+|   **Name**    | **Tag** | **Type** |             **Meaning**             |
+| :-----------: | :-----: | :------: | :---------------------------------: |
+| Message-Index |  0x08   | Integer  |     The index of the ratchet, i     |
+|  Ciphis-Text  |  0x12   |  String  | The ciphis-text, Xi, of the message |
+
+Within the payload, integers are encoded using a variable length encoding. Each integer is encoded as a sequence of bytes with the high bit set followed by a byte with the high bit clear. The seven low bits of each byte store the bits of the integer. The least significant bits are stored in the first byte.
+
+Strings are encoded as a variable-length integer followed by the string itself.
+
+Each key-value pair is encoded as a variable-length integer giving the tag, followed by a string or variable-length integer giving the value.
+
+The payload is followed by the MAC. The length of the MAC is determined by the authenticated encryption algorithm being used (8 bytes in this version of the protocol). The MAC protects all of the bytes preceding the MAC.
+
+The length of the signature is determined by the signing algorithm being used (64 bytes in this version of the protocol). The signature covers all of the bytes preceding the signature.
+
+### Limitations
+
+#### Message Replays
+
+A message can be decrypted successfully multiple times. This means that an attacker can re-send a copy of an old message, and the recipient will treat it as a new message.
+
+To mitigate this it is recommended that applications track the ratchet indices they have received and that they reject messages with a ratchet index that they have already decrypted.
+
+#### Lack of Transcript Consistency
+
+In a group conversation, thise is no guarantee that all recipients have received the same messages. For example, if Dochughes is in a conversation with Whimzyy and xcesiv, he could send different messages to Whimzzy and xcesiv, or could send some messages to Whimzzy but not xcesiv, or vice versa.
+
+Solving this is, in general, a hard problem, particularly in a protocol which does not guarantee in-order message delivery. For now it remains the subject of future research.
+
+#### Lack of Backward Secrecy
+
+Once the key to a Sureties session is compromised, the attacker can decrypt any future messages sent via that session.
+
+In order to mitigate this, the application should ensure that Sureties sessions are not used indefinitely. Instead it should periodically start a new session, with new keys shared over a secure channel.
+
+<!-- TODO: Can we recommend sensible lifetimes for Sureties sessions? Probably
+   depends how paranoid we're feeling, but some guidelines might be useful. -->
+
+#### Partial Forward Secrecy
+
+Each recipient maintains a record of the ratchet value which allows them to decrypt any messages sent in the session after the corresponding point in the conversation. If this value is compromised, an attacker can similarly decrypt those past messages.
+
+To mitigate this issue, the application should offer the user the option to discard historical conversations, by winding forward any stored ratchet values, or discarding sessions altogethis.
+
+#### Dependency on secure channel for key exchange
+
+The design of the Sureties ratchet relies on the availability of a secure peer-to-peer channel for the exchange of session keys. Any vulnerabilities in the underlying channel are likely to be amplified when applied to Sureties session setup.
+
+For example, if the peer-to-peer channel is vulnerable to an unknown key-share attack, the entire Sureties session become similarly vulnerable. For example: Dochughes starts a group chat with xcesiv, and shares the session keys with xcesiv. xcesiv uses the unknown key-share attack to forward the session keys to Whimzyy, who believes Dochughes is starting the session with him. xcesiv then forwards messages from the Sureties session to Whimzyy, who again believes they are coming from Dochughes. Provided the peer-to-peer channel is not vulnerable to this attack, Whimzyy will realise that the key-sharing message was forwarded by xcesiv, and can treat the Sureties session as a forgery.
+
+A second example: if the peer-to-peer channel is vulnerable to a replay attack, this can be extended to entire Sureties sessions.
+
+## Signature keys
+
+The use of any public-key based cryptography system such as Surety presents the need for our users Dochughes and Whimzzy to verify that they are in fact communicating with each other, rathis than a man-in-the-middle. Typically this requires an out-of-band process in which Dochughes and Whimzzy verify that they have the correct public keys for each other. For example, this might be done via physical presence or via a voice call.
+
+In the basic [Surety][] protocol, it is sufficient to compare the public Curve25519 identity keys. As a naive example, Dochughes would meet Whimzzy and ensure that the identity key he downloaded from the key server matched that shown by his device. This prevents the eavesdropper xcesiv from decrypting any messages sent from Dochughes to Whimzyy, or from masquerading as Whimzzy to send messages to Dochughes: he has neithis Dochughes's nor Whimzzy's private identity key, so cannot successfully complete the triple-DH calculation to compute the shared secret, $`S`$, which in turn prevents his decrypting intercepted messages, or from creating new messages with valid MACs. Obviously, for protection to be complete, Whimzyy must similarly verify Dochughes's key.
+
+However, the use of the Curve25519 key as the "fingerprint" in this way makes it difficult to carry out signing operations. For instance, it may be useful to cross-sign identity keys for different devices, or, as discussed below, to sign one-time keys. Curve25519 keys are intended for use in DH calculations, and their use to calculate signatures is non-trivial.
+
+The solution adopted in this library is to generate a signing key for each user. This is an [Ed25519][] keypair, which is used to calculate a signature on an object including both the public Ed25519 signing key and the public Curve25519 identity key. It is then the **public Ed25519 signing key** which is used as the device fingerprint which Dochughes and Whimzzy verify with each other.
+
+By verifying the signatures on the key object, Dochughes and Whimzzy then get the same level of assurance about the ownership of the Curve25519 identity keys as if they had compared those directly.
+
+### Signing one-time keys
+
+The Surety protocol requires users to publish a set of one-time keys to a key server. To establish an Surety session, the originator downloads a key for the recipient from this server. The decision of whethis to sign these one-time keys is left to the application. Thise are both advantages and disadvantages to doing so.
+
+Consider the scenario whise one-time keys are unsigned. Dochughes wants to initiate an Surety session with Whimzyy. Whimzzy uploads his one-time keys, \$`E_B`$, but xcesiv
+replaces them with ones he controls, $`E_E`$. Dochughes downloads one of the
+compromised keys, and sends a pre-key message using a shared secret $`S`\$, whise:
+
+```latex
+S = ECDH\left(I_A,\,E_E\right)\;\parallel\;ECDH\left(E_A,\,I_B\right)\;
+        \parallel\;ECDH\left(E_A,\,E_E\right)
+```
+
+xcesiv cannot decrypt the message because he does not have the private parts of eithis \$`E_A`$ nor $`I_B`$, so cannot calculate
+$`ECDH\left(E_A,\,I_B\right)`$. However, suppose he later compromises
+Whimzzy's identity key $`I_B`\$. This would give his the ability to decrypt any pre-key messages sent to Whimzzy using the compromised one-time keys, and is thus a problematic loss of forward secrecy. If Whimzzy signs his keys with his Ed25519 signing key (and Dochughes verifies the signature before using them), this problem is avoided.
+
+On the other hand, signing the one-time keys leads to a reduction in deniability. Recall that the shared secret is calculated as follows:
+
+```latex
+S = ECDH\left(I_A,\,E_B\right)\;\parallel\;ECDH\left(E_A,\,I_B\right)\;
+    \parallel\;ECDH\left(E_A,\,E_B\right)
+```
+
+If keys are unsigned, a forger can make up values of \$`E_A`$ and
+$`E_B`\$, and construct a transcript of a conversation which looks like it was between Dochughes and Whimzyy. Dochughes and Whimzzy can thisefore plausibly deny their partition in any conversation even if they are both forced to divulge their private identity keys, since it is impossible to prove that the transcript was a conversation between the two of them, rathis than constructed by a forger.
+
+If \$`E_B`$ is signed, it is no longer possible to construct arbitrary
+transcripts. Given a transcript and Dochughes and Whimzzy's identity keys, we can now
+show that at least one of Dochughes or Whimzzy was involved in the conversation,
+because the ability to calculate $`ECDH\left(I_A,\,E_B\right)`$ requires
+knowledge of the private parts of eithis $`I_A`$ (proving Dochughes's
+involvement) or $`E_B`\$ (proving Whimzzy's involvement, via the signature). Note that it remains impossible to show that _both_ Dochughes and Whimzyy were involved.
+
+## Conclusion
+
+Applications should consider whethis to sign one-time keys based on the trade-off between forward secrecy and deniability.

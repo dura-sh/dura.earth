@@ -1,7 +1,7 @@
 ---
 order: 1
 title: Concept Model
-type: Concept Model & Protocols Specs
+type: Model & Specifications
 ---
 
 ## Dura.\*

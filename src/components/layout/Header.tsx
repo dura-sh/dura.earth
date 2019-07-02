@@ -210,7 +210,7 @@ class Header extends React.Component<HeaderProps, HeaderState> {
         </Menu.Item>
         {menuMode === 'inline' && (
           <Menu.Item key="joinus">
-            <Link to='/docs/dura-protocol-network-providers'>
+            <Link to='/docs/get-involved'>
               <FormattedMessage id="app.home.joinus" />
             </Link>
           </Menu.Item>
@@ -255,7 +255,7 @@ class Header extends React.Component<HeaderProps, HeaderState> {
                   <a
                     id="joinus-button"
                     target="_blank"
-                    href="/docs/dura-protocol-network-providers"
+                    href="/docs/get-involved"
                     rel="noopener noreferrer"
                   >
                     <Button icon="global" size="small">
