@@ -67,7 +67,7 @@ stages:
                     WebAppName: $(webAppName)
                     packageForLinux: '$(System.ArtifactsDirectory)/drop/$(Build.BuildId).zip'
                     RuntimeStack: 'NODE|10.10'
-                    StartupCommand: 'npm run start'
+                    StartupCommand: 'npm run serve'
                     ScriptType: 'Inline Script'
                     InlineScript: |
                       npm install
