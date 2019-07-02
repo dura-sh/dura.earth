@@ -10,7 +10,7 @@
   "license": "MIT",
   "scripts": {
     "build": "gatsby build",
-    "dev": "rm -rf .cache public node_modules && npm install && gatsby develop",
+    "dev": "rm -rf .cache public && gatsby develop",
     "docker:dev": "docker-compose -f ./docker/docker-compose.dev.yml up",
     "docker:down": "docker-compose -f ./docker/docker-compose.dev.yml down",
     "docker:push": "npm run docker-hub:build && npm run docker:tag && docker push durash/world",
@@ -26,7 +26,7 @@
     "lint:style": "stylelint \"site/**/*.less\" --syntax less",
     "precommit": "npm run lint-staged",
     "prettier": "prettier --write ./site/**/**/**",
-    "serve": "gatsby serve -p 8080 -H duraworld.azurewebsites.net",
+    "serve": "gatsby serve",
     "site": "cross-env NODE_OPTIONS=--max-old-space-size=4096 npm run build",
     "start": "npm run dev",
     "test": "npm run lint"

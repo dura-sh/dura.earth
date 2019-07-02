@@ -1,9 +1,7 @@
-version: '3.5'
-
 services:
-  dura-world-dev:
-    container_name: 'dura-world-dev'
-    image: 'dura-world-dev'
+  dura-earth-dev:
+    container_name: 'dura-earth-dev'
+    image: 'dura-earth-dev'
     ports:
       - 8000:8000
     build:

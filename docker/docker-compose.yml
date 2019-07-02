@@ -1,19 +1,17 @@
-version: '3.5'
-
 services:
-  dura-world-build:
-    container_name: 'dura-world-build'
-    image: 'dura-world-build'
+  dura-earth-build:
+    container_name: 'dura-earth-build'
+    image: 'dura-earth-build'
     build:
         context: ../
     volumes:
       - public:/usr/src/app/public
 
-  dura-world-web:
+  dura-earth-web:
     image: nginx
     ports:
       - 80:80
-    container_name: 'dura-world-web'
+    container_name: 'dura-earth-web'
     restart: unless-stopped
     volumes:
       - public:/usr/share/nginx/html:ro
