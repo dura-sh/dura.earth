@@ -1,4 +1,5 @@
 FROM circleci/node:latest-browsers
+EXPOSE 80
 
 WORKDIR /usr/src/app/
 USER root
