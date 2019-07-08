@@ -1,20 +1,22 @@
-services:
-  dura-earth-build:
-    container_name: 'dura-earth-build'
-    image: 'dura-earth-build'
-    build:
-        context: ../
-    volumes:
-      - public:/usr/src/app/public
+version: "3.5"
 
-  dura-earth-web:
+services:
+  build:
+    build:
+      context: ../
+      dockerfile: Dockerfile.onbuild
+    container_name: earth-build
+    volumes:
+      - ../public:/pub
+
+  web:
     image: nginx
     ports:
       - 80:80
-    container_name: 'dura-earth-web'
+    container_name: earth-web
     restart: unless-stopped
     volumes:
-      - public:/usr/share/nginx/html:ro
+      - ../public:/usr/share/nginx/html:ro
       - ./nginx.conf:/etc/nginx/conf.d/default.conf
 
 volumes:

@@ -1,12 +1,12 @@
 # The World of Dura.\*
 
-The first pit stop you need before entering the world of [Dura.\*](https://github.com/durash/dura.world).
+The first pit stop you need before entering the earth of [Dura.\*](https://github.com/durash/dura.earth).
 
 ## Development
 
 ```bash
-$ git clone git@github.com:durash/dura.world.git
-$ cd dura.world
+$ git clone git@github.com:durash/dura.earth.git
+$ cd dura.earth
 $ npm install
 $ npm run dev
 ```
@@ -19,7 +19,7 @@ Assuming you're in the proper directory and have installed dependencies, you can
 
 ```
 $ npm run site
-$ npm run server
+$ npm run serve
 ```
 
 ## Contributing

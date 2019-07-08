@@ -1,11 +1,11 @@
 {
-  "name": "dura.world",
+  "name": "dura.earth",
   "version": "0.0.1",
   "description": "site of Dura.*",
   "homepage": "https://dura.earth/",
   "repository": {
     "type": "git",
-    "url": "https://github.com/dura-sh/dura.world"
+    "url": "https://github.com/dura-sh/dura.earth"
   },
   "license": "MIT",
   "scripts": {
@@ -13,12 +13,12 @@
     "dev": "rm -rf .cache public && gatsby develop",
     "docker:dev": "docker-compose -f ./docker/docker-compose.dev.yml up",
     "docker:down": "docker-compose -f ./docker/docker-compose.dev.yml down",
-    "docker:push": "npm run docker-hub:build && npm run docker:tag && docker push durash/world",
+    "docker:push": "npm run docker:hub:build && npm run docker:tag && docker push durash/earth",
     "docker:prod:build": "docker-compose -f ./docker/docker-compose.yml build",
-    "docker:prod:dev": "docker-compose -f ./docker/docker-compose.yml up",
+    "docker:prod:dev": "docker-compose -f ./docker/docker-compose.yml up --build",
     "docker:build": "docker-compose -f ./docker/docker-compose.dev.yml build",
-    "docker:tag": "docker tag durash/world durash/world",
-    "docker:hub:build": "docker build  -f Dockerfile.hub -t  dura-world ./",
+    "docker:tag": "docker tag dura-earth durash/earth",
+    "docker:hub:build": "docker build  -f Dockerfile.hub -t  durash/earth ./",
     "lint": "npm run lint:es && npm run lint:style",
     "lint-staged": "lint-staged",
     "lint-staged:js": "eslint --ext .js",
@@ -26,7 +26,7 @@
     "lint:style": "stylelint \"site/**/*.less\" --syntax less",
     "precommit": "npm run lint-staged",
     "prettier": "prettier --write ./site/**/**/**",
-    "serve": "gatsby serve -p 80",
+    "serve": "gatsby serve",
     "site": "cross-env NODE_OPTIONS=--max-old-space-size=4096 npm run build",
     "start": "npm run dev",
     "test": "npm run lint"
@@ -43,6 +43,7 @@
     "**/*.{js,jsx}": "npm run lint-staged:js"
   },
   "dependencies": {
+    "@types/react-document-title": "^2.0.3",
     "@types/react-intl": "^2.3.17",
     "antd": "3.16.2",
     "applicationinsights": "^1.4.0",

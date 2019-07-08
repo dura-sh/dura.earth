@@ -19,8 +19,8 @@ export interface IMenuData {
 export function getLocalizedPathname(path: string, enUS: boolean) {
   let pathname = path.startsWith('/') ? path : `/${path}`;
   if (pathname === '/' || pathname === '/index') {
-    if (enUS){
-      return pathname;
+    if (enUS) {
+      return '/';
     }
   }
   if (pathname.endsWith('/')) {

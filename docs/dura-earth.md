@@ -4,6 +4,6 @@ title: Model & Specifications (dura.world)
 type: Available Services
 ---
 
-## dura.world
+## dura.earth
 
 describe it

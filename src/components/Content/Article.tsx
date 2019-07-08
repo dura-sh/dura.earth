@@ -56,7 +56,7 @@ export default class Article extends React.PureComponent<ArticleProps> {
       intl: { locale },
     } = this.context as {
       intl: {
-        locale: 'zh-CN' | 'en-US';
+        locale: 'en-US';
       };
     };
     return (

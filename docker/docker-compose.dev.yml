@@ -1,13 +1,11 @@
 services:
-  dura-earth-dev:
-    container_name: 'dura-earth-dev'
-    image: 'dura-earth-dev'
+  earth-dev:
     ports:
       - 8000:8000
     build:
       context: ../
       dockerfile: Dockerfile.dev
+    container_name: "earth-dev"
     volumes:
       - ../src:/usr/src/app/src
-      - ../config:/usr/src/app/config
-      - ../mock:/usr/src/app/mock
+      - ../public:/usr/src/app/pub

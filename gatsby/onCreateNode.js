@@ -9,7 +9,7 @@ const himalaya = require('himalaya');
 
 // 获取用户的头像列表
 const getAvatarList = async filename => {
-  const sourcePath = 'https://github.com/dura-sh/dura.world/contributors ';
+  const sourcePath = 'https://github.com/dura-sh/dura.earth/contributors/master';
   const url = `${sourcePath}${filename}/list`;
   const html = await fetch(url).then(res => res.text());
   const ast = himalaya.parse(html)[0].children || [];

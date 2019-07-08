@@ -240,7 +240,7 @@ class Page1 extends React.PureComponent {
           <h2>
             Let your <span>individual reality</span> shine as the{' '}
             <a href="/docs/durable-identity-protocol#surety">surety</a> for a <span>durable</span>{' '}
-            world:
+            earth:
           </h2>
           <div className="title-line-wrapper page1-line">
             <div className="title-line" />

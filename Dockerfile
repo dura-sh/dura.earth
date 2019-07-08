@@ -1,13 +1,10 @@
 FROM circleci/node:latest-browsers
-EXPOSE 80
 
-WORKDIR /usr/src/app/
+WORKDIR /pub
 USER root
 COPY package.json ./
 RUN npm install
+RUN npm run build
 
-COPY ./ ./
-
-RUN npm run test
-
-CMD ["npm", "run", "build"]
+# Build
+ONBUILD ADD public/ /pub

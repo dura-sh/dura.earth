@@ -36,10 +36,10 @@ export default function HTML(props) {
               var pathname = path.startsWith('/') ? path : '/' + path;
               if (enUS) { // to enUS
                 '/';
-              } else if (pathname === '/') {
-                return '/index';
-              } else if (pathname.endsWith('/')) {
-                return pathname;
+              } else if (pathname === '/index') {
+                return '/';
+              } else if (pathname.endsWith('/index')) {
+                return '/';
               }
               return pathname;
             }
