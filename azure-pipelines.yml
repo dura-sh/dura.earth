@@ -2,6 +2,7 @@
 # Build a Node.js React app and deploy it to Azure as a Linux web app.
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
+name: dura.earth
 
 trigger:
   - master
@@ -11,7 +12,7 @@ variables:
   azureSubscription: '592263d6-32b5-471e-a5bc-707619a11ba3'
 
   # Web app name
-  webAppName: 'duraworld'
+  webAppName: 'duraearth'
 
   # Agent VM image name
   vmImageName: 'ubuntu-latest'
@@ -26,10 +27,20 @@ stages:
           vmImage: $(vmImageName)
 
         steps:
+          - checkout: self
+            clean: "all"
+          - script: npm install
+            displayName: install
+          - script: npm run lint
+            displayName: lint
+          - script: npm run build
+            env:
+              PROGRESS: none
+            displayName: build
           - task: ArchiveFiles@2
             displayName: 'Archive files'
             inputs:
-              rootFolderOrFile: '$(System.DefaultWorkingDirectory)'
+              rootFolderOrFile: 'public/'
               includeRootFolder: false
               archiveType: zip
               archiveFile: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
