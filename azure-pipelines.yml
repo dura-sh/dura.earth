@@ -17,7 +17,7 @@ steps:
   displayName: 'install gatsby'
 
 - script: |
-    cd gatsby-site
+    cd dura.earth
     npm install
     npx gatsby build
   displayName: 'gatsby build'
@@ -25,7 +25,7 @@ steps:
 
 - task: CopyFiles@2
   inputs:
-    sourceFolder: 'gatsby-site/public'
+    sourceFolder: 'dura.earth/public'
     contents: '**' 
     targetFolder: $(Build.ArtifactStagingDirectory)
     cleanTargetFolder: true 
