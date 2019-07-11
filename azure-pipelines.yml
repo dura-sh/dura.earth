@@ -19,13 +19,13 @@ steps:
 - script: |
     cd dura.earth
     npm install
-    npx gatsby build
+    npm run build
   displayName: 'gatsby build'
  
 
 - task: CopyFiles@2
   inputs:
-    sourceFolder: 'dura.earth/public'
+    sourceFolder: 'public'
     contents: '**' 
     targetFolder: $(Build.ArtifactStagingDirectory)
     cleanTargetFolder: true 
