@@ -1,3 +1,3 @@
-storage_account_name = "duraearth"
+storage_account_name = "vstsbuildterraform"
 container_name       = "terraform-state"
-key                  = "dureearth.terraform.tfstate"
+key                  = "demo-gatsby.terraform.tfstate"
