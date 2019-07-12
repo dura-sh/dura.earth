@@ -44,6 +44,7 @@ config/components/es
 config/components/package.json
 **/package-lock.json
 .deployment
+.terraform
 
 # gatsby files
 .cache/
