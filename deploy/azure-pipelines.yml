@@ -1,4 +1,9 @@
 
+resources:
+  containers:
+  - container: terraform_container
+    image: lenisha/terraform-light
+
 pool:
   vmImage: 'Ubuntu 16.04'
 
