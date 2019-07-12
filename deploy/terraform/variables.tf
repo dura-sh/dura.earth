@@ -1,9 +1,9 @@
 variable "dns_name" {
-  description = "dura.earth"
+  description = "duraearth"
 }
 
 variable "rg-name" {
-  default = "duraearth"
+  default = "world"
 }
 
 variable "location" {
