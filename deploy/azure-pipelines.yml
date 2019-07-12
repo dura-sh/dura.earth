@@ -14,7 +14,7 @@ steps:
 - task: DownloadBuildArtifacts@0
   inputs:
     buildType: 'specific' # Options: current, specific
-    project: 'dura.earth' # Required when buildType == Specific
+    project: 'earth' # Required when buildType == Specific
     pipeline: 'dura-earth-build' # Required when buildType == Specific
     #specificBuildWithTriggering: false # Optional
     #buildVersionToDownload: 'latest' # Required when buildType == Specific# Options: latest, latestFromBranch, specific
