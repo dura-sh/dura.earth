@@ -1,0 +1,3 @@
+# Build
+FROM gatsbyjs/gatsby:latest
+ONBUILD ADD public/ /pub
