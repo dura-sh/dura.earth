@@ -1,7 +1,7 @@
 import React from 'react';
 import Media from 'react-media';
 
-import Home from '../components/Home';
+import Home from '../components/home';
 import WrapperLayout from '../components/layout';
 
 const IndexPage = props => {

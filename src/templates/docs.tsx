@@ -8,15 +8,9 @@ interface IMarkDownFields {
   path: string;
   slug: string;
   modifiedTime: number;
-  avatarList: Array<{
-    href: string;
-    text: string;
-    src: string;
-  }>;
 }
 export interface IFrontmatterData extends IMarkDownFields {
   title: {
-    'zh-CN': string;
     'en-US': string;
   };
   toc: string | boolean;
@@ -33,7 +27,6 @@ type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 
 export interface IGraphqlFrontmatterData extends Omit<IFrontmatterData, 'title'> {
   title: {
-    zh_CN: string;
     en_US: string;
   };
 }
@@ -107,7 +100,6 @@ export const pageQuery = graphql`
       tableOfContents(maxDepth: 3)
       frontmatter {
         title {
-          zh_CN
           en_US
         }
         order
@@ -117,11 +109,6 @@ export const pageQuery = graphql`
         path
         slug
         modifiedTime
-        avatarList {
-          href
-          text
-          src
-        }
       }
     }
     allMarkdownRemark(
@@ -132,7 +119,6 @@ export const pageQuery = graphql`
         node {
           frontmatter {
             title {
-              zh_CN
               en_US
             }
             order

@@ -9,7 +9,7 @@ const himalaya = require('himalaya');
 
 // 获取用户的头像列表
 const getAvatarList = async filename => {
-  const sourcePath = 'https://github.com/ant-design/ant-design-pro-site/contributors/master';
+  const sourcePath = 'https://github.com/dura-sh/dura.earth/contributors/master';
   const url = `${sourcePath}${filename}/list`;
   const html = await fetch(url).then(res => res.text());
   const ast = himalaya.parse(html)[0].children || [];
@@ -59,10 +59,7 @@ module.exports = exports.onCreateNode = async ({ node, actions, getNode }) => {
       });
 
       if (!slug) {
-        slug = `${sourceInstanceName}/${relativePath
-          .replace('.en-US.md', '')
-          .replace('.zh-CN.md', '-cn')
-          .replace('.md', '')}`;
+        slug = `${sourceInstanceName}/${relativePath.replace('.en-US.md', '').replace('.md', '')}`;
       }
 
       createNodeField({

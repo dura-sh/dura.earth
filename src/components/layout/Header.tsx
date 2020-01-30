@@ -15,11 +15,11 @@ if (typeof window !== 'undefined') {
   docSearch = require('docsearch.js'); // eslint-disable-line
 }
 
-function initDocSearch(locale: 'zh-CN' | 'en-US') {
+function initDocSearch(locale: 'en-US') {
   if (!docSearch) {
     return;
   }
-  const lang = locale === 'zh-CN' ? 'cn' : 'en';
+  const lang = locale === 'en';
   docSearch({
     apiKey: 'dfba5eddecb719460b9fd232af57748d',
     indexName: 'pro_ant_design',
@@ -31,7 +31,7 @@ function initDocSearch(locale: 'zh-CN' | 'en-US') {
       }>
     ) {
       hits.forEach(hit => {
-        hit.url = hit.url.replace('ant.design.pro', window.location.host); // eslint-disable-line
+        hit.url = hit.url.replace('dura.earth', window.location.host); // eslint-disable-line
         hit.url = hit.url.replace('https:', window.location.protocol); // eslint-disable-line
       });
       return hits;
@@ -74,7 +74,7 @@ class Header extends React.Component<HeaderProps, HeaderState> {
     });
     initDocSearch(intl.locale);
 
-    if (localStorage.getItem(key) !== 'true' && Date.now() < new Date('2018/9/5').getTime()) {
+    if (localStorage.getItem(key) !== 'true' && Date.now() < new Date('2019/6/30').getTime()) {
       this.infoNewVersion();
     }
 
@@ -127,7 +127,7 @@ class Header extends React.Component<HeaderProps, HeaderState> {
         <div>
           <img
             src="https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg"
-            alt="Ant Design"
+            alt="Dura.*"
           />
           <p>
             {formatMessage({ id: 'app.publish.greeting' })}
@@ -136,12 +136,12 @@ class Header extends React.Component<HeaderProps, HeaderState> {
               rel="noopener noreferrer"
               href={formatMessage({ id: 'app.publish.url' })}
             >
-              Ant Desgin Pro {formatMessage({ id: 'app.publish.intro' })}
+              Dura.* {formatMessage({ id: 'app.publish.intro' })}
             </a>
             {formatMessage({ id: 'app.publish.tips' })}
             {formatMessage({ id: 'app.publish.old-version-guide' })}
-            <a target="_blank" rel="noopener noreferrer" href="https://v1.pro.ant.design">
-              v1.pro.ant.design
+            <a target="_blank" rel="noopener noreferrer" href="https://dura.earth">
+              dura.earth
             </a>
             {formatMessage({ id: 'app.publish.old-version-tips' })}
           </p>
@@ -162,21 +162,21 @@ class Header extends React.Component<HeaderProps, HeaderState> {
     const currentHref = window.location.href.substr(currentProtocol.length);
 
     if (utils.isLocalStorageNameSupported()) {
-      localStorage.setItem('locale', utils.isZhCN(pathname) ? 'en-US' : 'zh-CN');
+      localStorage.setItem('locale', 'en-US');
     }
     window.location.href =
       currentProtocol +
       currentHref.replace(
         window.location.pathname,
-        utils.getLocalizedPathname(pathname, !utils.isZhCN(pathname))
+        utils.getLocalizedPathname(pathname),
       );
   };
   onVersionChange = (value: string) => {
     if (value === 'v1') {
-      window.open('https://v1.pro.ant.design/');
+      window.open('https://durachain.io/');
     }
     if (value === 'v2') {
-      window.open('https://v2-pro.ant.design/');
+      window.open('https://dura.earth/');
     }
   };
   render() {
@@ -190,33 +190,29 @@ class Header extends React.Component<HeaderProps, HeaderState> {
       .slice(0, -1)
       .join('/');
     let activeMenuItem = module || 'home';
-    if (/^blog/.test(path)) {
-      activeMenuItem = 'blog';
-    } else if (/docs/.test(path)) {
+    if (/docs/.test(path)) {
       activeMenuItem = 'docs';
     } else if (path === '/') {
       activeMenuItem = 'home';
     }
 
-    const isZhCN = intl.locale === 'zh-CN';
-
     const menu = [
       <Menu mode={menuMode} selectedKeys={[activeMenuItem]} id="nav" key="nav">
         <Menu.Item key="home">
-          <Link to={utils.getLocalizedPathname('/', isZhCN)}>
+          <Link to='/'>
             <FormattedMessage id="app.header.menu.home" />
           </Link>
         </Menu.Item>
         <Menu.Item key="docs">
-          <Link to={utils.getLocalizedPathname('/docs/getting-started', isZhCN)}>
+          <Link to='/docs/welcome'>
             <FormattedMessage id="app.header.menu.docs" />
           </Link>
         </Menu.Item>
         {menuMode === 'inline' && (
-          <Menu.Item key="preview">
-            <a target="_blank" href="http://preview.pro.ant.design/" rel="noopener noreferrer">
-              <FormattedMessage id="app.home.preview" />
-            </a>
+          <Menu.Item key="joinus">
+            <Link to='/docs/get-involved'>
+              <FormattedMessage id="app.home.joinus" />
+            </Link>
           </Menu.Item>
         )}
       </Menu>,
@@ -259,7 +255,7 @@ class Header extends React.Component<HeaderProps, HeaderState> {
                   <a
                     id="joinus-button"
                     target="_blank"
-                    href="/docs/dura-protocol-network"
+                    href="/docs/get-involved"
                     rel="noopener noreferrer"
                   >
                     <Button icon="global" size="small">

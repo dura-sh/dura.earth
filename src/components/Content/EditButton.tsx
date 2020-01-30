@@ -5,11 +5,7 @@ const EditButton: React.SFC<{
   title: React.ReactNode;
   filename?: string;
   sourcePath?: string;
-}> = ({
-  title,
-  filename,
-  sourcePath = 'https://github.com/ant-design/ant-design-pro-site-site/edit/master',
-}) => {
+}> = ({ title, filename, sourcePath = 'https://github.com/dura-sh/dura.earth/master/edit' }) => {
   return (
     <Tooltip title={title}>
       <a className="edit-button" target="_blank" href={`${sourcePath}${filename}`}>

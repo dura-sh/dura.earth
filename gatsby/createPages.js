@@ -47,7 +47,7 @@ module.exports = async ({ graphql, actions }) => {
   const edges = allMarkdown.data.allMarkdownRemark.edges;
   edges.forEach(edge => {
     const { slug, underScoreCasePath } = edge.node.fields;
-    if (slug.includes('docs/') || slug.includes('/blog')) {
+    if (slug.includes('docs/')) {
       const template = docsTemplate;
       const createArticlePage = path => {
         if (underScoreCasePath !== path) {
@@ -60,33 +60,24 @@ module.exports = async ({ graphql, actions }) => {
           context: {
             slug,
             // if is docs page
-            type: slug.includes('docs/') ? '/docs/' : '/blog/',
+            type: slug.includes('docs/') ? '/docs/' : '/docs/',
           },
         });
       };
-
-      // Register primary URL.
       createArticlePage(slug.replace('/index', ''));
     }
   });
-  // 首页的中文版
   const indexTemplate = resolve(__dirname, '../src/pages/index.tsx');
 
   createPage({
-    path: '/index-cn',
+    path: '/index',
     component: indexTemplate,
   });
 
   createRedirect({
     fromPath: '/docs/',
     redirectInBrowser: true,
-    toPath: '/docs/getting-started',
-  });
-
-  createRedirect({
-    fromPath: '/blog/',
-    redirectInBrowser: true,
-    toPath: '/blog/change-theme',
+    toPath: '/docs/welcome',
   });
   Object.keys(redirects).map(path =>
     createRedirect({

@@ -8,23 +8,6 @@ export interface IMenuData {
   [key: string]: IMenuData | MenuDataItem[];
 }
 
-// matchMedia polyfill for
-// https://github.com/WickyNilliams/enquire.js/issues/82
-
-export function isZhCN(pathname: string) {
-  if (pathname === '/') {
-    if (typeof window !== `undefined`) {
-      const locale = localStorage ? localStorage.getItem('locale') : 'en-US';
-      if (locale === 'zh-CN') {
-        return true;
-      }
-      return false;
-    }
-    return false;
-  }
-  return /-cn/.test(pathname);
-}
-
 /**
  * @param {*} path url
  * @param {*} zhCN boolean
@@ -33,23 +16,17 @@ export function isZhCN(pathname: string) {
  * else
  *  return "avatar-list-cn"
  */
-export function getLocalizedPathname(path: string, zhCN: boolean) {
+export function getLocalizedPathname(path: string, enUS: boolean) {
   let pathname = path.startsWith('/') ? path : `/${path}`;
-  pathname = pathname.replace('-cn', '');
   if (pathname === '/' || pathname === '/index') {
-    if (zhCN) {
-      return '/index-cn';
+    if (enUS) {
+      return '/';
     }
-    return '/';
-  }
-
-  if (!zhCN) {
-    return `${pathname}`;
   }
   if (pathname.endsWith('/')) {
-    return `${pathname.substring(0, pathname.length - 1)}-cn`;
+    return `${pathname.substring(0, pathname.length - 1)}`;
   }
-  return `${pathname}-cn`;
+  return `${pathname}`;
 }
 
 export function getMenuItems(
@@ -120,7 +97,6 @@ export const transformerFrontmatter = (frontmatter: IGraphqlFrontmatterData): IF
   return {
     ...frontmatter,
     title: {
-      'zh-CN': title.zh_CN,
       'en-US': title.en_US,
     },
   };

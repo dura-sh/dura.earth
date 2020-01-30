@@ -1,26 +1,27 @@
-# Dura.* Site
+# The World of Dura.\*
 
-The documentation source of [Dura.*](https://github.com/ant-design/ant-design-pro).
+The first pit stop you need before entering the earth of [Dura.\*](https://github.com/durash/dura.earth).
 
-### Development
+## Development
 
 ```bash
-$ git clone git@github.com:ant-design/ant-design-pro-site.git
-$ cd ant-design-pro-site
+$ git clone git@github.com:durash/dura.earth.git
+$ cd dura.earth
 $ npm install
-$ npm start
+$ npm run dev
 ```
 
-Then visit http://localhost:8001 .
+Then visit the localhost port outputted in your favorite browser (default: localhost:8000).
 
-### Deploy
+## Depolyment
+
+Assuming you're in the proper directory and have installed dependencies, you can build a deployment ready version by running:
 
 ```
 $ npm run site
+$ npm run serve
 ```
 
-### Publish Components
+## Contributing
 
-```
-$ npm run publish-components
-```
+If you wish to contribute please contact us.

@@ -138,13 +138,23 @@ svg g {
   h2 {
     margin: 25px auto;
     text-align: center;
-    font-weight: 300;
     font-size: 28px;
     color: #314659;
     letter-spacing: 0.6px;
 
+    a {
+      text-decoration: underline;
+      text-decoration-color: rgba(76, 175, 80, 0.75);
+    }
+
+    a:hover {
+      text-decoration: underline;
+      text-decoration-color: rgba(76, 175, 80, 1);
+    }
+
     span {
-      font-weight: 600;
+      color: rgba(13, 71, 161, 1);
+      font-weight: 900;
     }
   }
 }
@@ -158,7 +168,9 @@ svg g {
 
 /** page1 **/
 .page1 {
-  height: 960px;
+  height: 100vh;
+  min-height: 1060px;
+  margin-bottom: 40px;
 }
 
 .page1-line.title-line-wrapper {
@@ -269,7 +281,13 @@ svg g {
 /** page2 **/
 .page2 {
   text-align: center;
-  height: 588px;
+  background: url('../images/network.svg') #01172c no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 100vh;
+  min-height: 588px;
 
   .page2-content {
     will-change: transform;
@@ -277,11 +295,76 @@ svg g {
 }
 
 .page2-line {
-  margin: 148px auto 24px;
+  margin: 25px auto 24px;
   width: 114px;
 
   .title-line {
+    padding-top: 5px;
     animation: page2TitleLine 3s ease-in-out 0s infinite;
+  }
+}
+
+.content-wrapper {
+  height: 100%;
+  width: 100vw;
+  margin: 0;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.1);
+
+  .text-wrapper-bottom {
+    margin: 10% 25%;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 1);
+    border: 2px solid rgba(13, 71, 161, 1);
+    border-radius: 5px;
+    box-shadow: 2.5px 5px rgba(76, 175, 80, 0.5);
+  }
+
+  .text-wrapper-bottom p {
+    margin: 20px auto;
+    color: #999;
+    font-size: 16px;
+    line-height: 28px;
+  }
+  .text-wrapper-bottom h2 {
+    color: #314658;
+    font-weight: 600;
+    font-size: 28px;
+    letter-spacing: 0.6px;
+    white-space: nowrap;
+
+    span {
+      color: rgba(13, 71, 161, 1);
+      font-weight: 900;
+    }
+  }
+
+  .claim-id-form {
+    margin: auto 35% 50px;
+    input {
+      background-color: rgba(75, 75, 75, 0.1);
+      border-color: rgba(33, 150, 243, 0.5);
+    }
+    input:focus {
+      background-color: rgba(179, 229, 252, 0.2);
+    }
+    label {
+      display: none;
+    }
+  }
+  .claim-id-btn {
+    background-color: rgba(33, 150, 243, 0.85);
+    color: #fefefe;
+    border: 1px solid rgba(76, 175, 80, 1);
+    i {
+      color: #98ff98;
+    }
+  }
+  .claim-id-btn:hover {
+    background-color: rgba(179, 229, 252, 1);
+    i {
+      color: rgba(76, 175, 80, 1);
+    }
   }
 }
 
