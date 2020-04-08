@@ -10,7 +10,7 @@
   "license": "MIT",
   "scripts": {
     "build": "gatsby build",
-    "build:azure" : "npm install --arch=x64 --platform=linuxmusl sharp",
+    "build:azure": "npm install --arch=x64 --platform=linuxmusl sharp",
     "dev": "rm -rf .cache public && gatsby develop",
     "docker:dev": "docker-compose -f ./docker/docker-compose.dev.yml up",
     "docker:down": "docker-compose -f ./docker/docker-compose.dev.yml down",
