@@ -1,6 +1,6 @@
 ---
 order: 1
-title: Weclome
+title: Welcome
 type: Basic Overview
 ---
 
