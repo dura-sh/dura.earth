@@ -10,7 +10,7 @@
   "license": "MIT",
   "scripts": {
     "build": "gatsby build",
-    "build:azure" : "npm install --arch=x64 --platform=linuxmusl sharp",
+    "build:azure": "npm install --arch=x64 --platform=linuxmusl sharp",
     "dev": "rm -rf .cache public && gatsby develop",
     "docker:dev": "docker-compose -f ./docker/docker-compose.dev.yml up",
     "docker:down": "docker-compose -f ./docker/docker-compose.dev.yml down",
@@ -93,8 +93,7 @@
     "eslint-plugin-react": "^7.0.1",
     "eslint-tinker": "^0.5.0",
     "fs-extra": "^7.0.0",
-    "gatsby": "^2.2.7",
-    "gatsby-cli": "^2.7.7",
+    "gatsby": "^2.19.10",
     "gatsby-plugin-antd": "^2.0.2",
     "gatsby-plugin-catch-links": "^2.0.0",
     "gatsby-plugin-less": "^2.0.6",
@@ -135,5 +134,9 @@
     "typescript": "^3.5.2",
     "webpack": "^4.35.2"
   },
-  "title": "Dura.*"
+  "title": "Dura.*",
+  "engines": {
+    "npm": "<=10.16.0",
+    "node": "<=6.9.0"
+  }
 }
