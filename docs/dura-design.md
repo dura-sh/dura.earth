@@ -4,6 +4,6 @@ title: UI Design Toolbox (dura.design)
 type: Available Services
 ---
 
-## dura.design
+## dura.designs
 
 describe it
