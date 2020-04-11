@@ -9,3 +9,7 @@ variable "rg-name" {
 variable "location" {
   default = "WestUS2"
 }
+
+variable "is_hns_enabled" {
+  default = "true"
+}

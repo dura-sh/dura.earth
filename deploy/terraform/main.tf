@@ -30,7 +30,7 @@ resource "azurerm_storage_account" "webblob" {
 # Query Web Endpoint for Static Hosting
 module "query_url" {
   source  = "matti/resource/shell"
-  version = "0.3.1"
+  version = "0.6.0"
   command = "printf $(az storage account show -n ${azurerm_storage_account.webblob.name} -g ${azurerm_resource_group.demo-rg.name} --query \"primaryEndpoints.web\" --output tsv | cut -d \"/\" -f 3)"
 }
 
