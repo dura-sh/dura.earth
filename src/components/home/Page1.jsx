@@ -11,11 +11,8 @@ import tv from '../../images/tv.svg';
 import health from '../../images/health.svg';
 import buzz from '../../images/buzz.svg';
 import chat from '../../images/chat.svg';
-import design from '../../images/design.svg';
-import guide from '../../images/guide.svg';
 import money from '../../images/money.svg';
 import store from '../../images/store.svg';
-import support from '../../images/support.svg';
 
 const TweenOneGroup = TweenOne.TweenOneGroup;
 
@@ -37,7 +34,7 @@ const implementations = [
     shadowColor: 'rgba(183, 87, 208, .25)',
   },
   {
-    title: 'dura.buzz',
+    title: 'dura.report',
     content:
       'The durable news aggrregator for your daily digest. Relavent content and recommendation as sureties dervived as your personal buzz center.',
     src: buzz,
@@ -61,32 +58,11 @@ const implementations = [
     shadowColor: 'rgba(250,140,22,.25)',
   },
   {
-    title: 'dura.design',
-    content: 'A design toolbox',
-    src: design,
-    color: '#EB2F96',
-    shadowColor: 'rgba(235,45,150,.25)',
-  },
-  {
     title: 'dura.store',
     content: 'Build on the Dura network',
     src: store,
     color: '#FAAD14',
     shadowColor: 'rgba(250,173,20,.25)',
-  },
-  {
-    title: 'dura.guide',
-    content: 'Learn how to use Dura',
-    src: guide,
-    color: '#1890FF',
-    shadowColor: 'rgba(24,144,255,.25)',
-  },
-  {
-    title: 'dura.support',
-    content: 'Ask the Dura team for help',
-    src: support,
-    color: '#2F54EB',
-    shadowColor: 'rgba(47,84,235,.25)',
   },
 ];
 
